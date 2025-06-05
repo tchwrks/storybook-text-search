@@ -195,7 +195,7 @@ export type ExtractionRule =
 <br/>
 
 <details>
-<summary>Click to view `jsxTextMap` examples and advanced use cases</summary>
+<summary>Click to view <code>jsxTextMap</code> examples and advanced use cases</summary>
 
 ### Utilizing `config.jsxTextMap`
 

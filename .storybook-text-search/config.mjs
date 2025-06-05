@@ -1,4 +1,4 @@
-/** @type {import('src/textsearch/types/index').ExtractionConfig} */
+/** @type {import('src/types/index').TextSearchConfig} */
 
 import {
   tableExtractor,
@@ -10,7 +10,6 @@ import {
 const config = {
   inputPaths: ["../src/stories/**/*.mdx", "../src/**/*.stories.{js,jsx,ts,tsx}"],
   outputDebugJson: true,
-  maxJsxDepth: 5,
   jsxPropAllowList: ['alt', 'title', 'aria-label', 'placeholder', 'label', 'value', 'children'],
   jsxTextMap: {
     Table: {

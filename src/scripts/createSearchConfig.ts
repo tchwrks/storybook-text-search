@@ -20,12 +20,12 @@ export async function createTextSearchConfig({
     fileName,
     stories,
 }: CreateConfigOptions): Promise<void> {
-    const resolvedFileName = fileName ?? 'config.js';
+    const resolvedFileName = fileName ?? 'config.mjs';
     const filePath = path.join(targetDir, resolvedFileName);
 
     const alreadyExists = await fs.stat(filePath).then(() => true).catch(() => false);
 
-    const defaultStories = stories.length > 0 ? stories : ['./src/stories/**/*.mdx', './src/**/*.stories.tsx'];
+    const defaultStories = stories.length > 0 ? stories : ['../src/stories/**/*.mdx', '../src/**/*.stories.tsx'];
 
     if (alreadyExists) {
         console.log(`⚠️  ${resolvedFileName} already exists at ${filePath}. Skipping creation.`);
@@ -44,7 +44,7 @@ export async function createTextSearchConfig({
     const sourceFile = project.createSourceFile(filePath, '', { overwrite: false });
 
     // Add JSDoc-style type annotation comment for JS
-    sourceFile.insertText(0, `/** @type {import('src/textsearch/types/index').ExtractionConfig} */\n`);
+    sourceFile.insertText(0, `/** @type {import('src/types/index').TextSearchConfig} */\n`);
 
     sourceFile.addVariableStatement({
         declarationKind: VariableDeclarationKind.Const,

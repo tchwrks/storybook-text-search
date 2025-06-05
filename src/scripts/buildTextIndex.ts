@@ -20,7 +20,7 @@ export interface SearchDoc {
 }
 
 const TOOL_DIR = '.storybook-text-search';
-const CONFIG_FILE = 'config.js';
+const CONFIG_FILE = 'config.mjs';
 
 
 export async function buildTextIndex() {
@@ -60,7 +60,7 @@ export async function buildTextIndex() {
     await fs.mkdir(outputDir, { recursive: true });
 
 
-    await fs.writeFile(path.join(outputDir, 'text-search-docs.json'), JSON.stringify(docs, null, 2));
+    await fs.writeFile(path.join(toolDirPath, 'text-search-docs.json'), JSON.stringify(docs, null, 2));
 
 
     if (docs.length > 0 && mini.documentCount > 0) {

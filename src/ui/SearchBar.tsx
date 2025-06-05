@@ -1,20 +1,4 @@
-// MVP:
-// TODO: - Re-index on Storybook HMR. See preset.ts (Shallow? Only re-index what changes. Hashing?)
-// TODO: - Remove JSX extraction code (just MDX for now) + any other unused code
-// TODO: - Refine / double check metaTitle slugification to align more with Storybook's pattern if possible
-// TODO: - Handle case where many results are returned (pagination, scroll within, etc.)
-// TODO: - CLI init command + script 
-// TODO:    - Generate .storybook-search directory (with config file -> make config file js compatible)
-// TODO:    - Find .storybook/main file, parse it for stories/docs dirs, add addon to config, add index to static assets dir
-// TODO:    - Generate initial index (with CLI)
-
-// Post-MVP:
-// TODO: - Create pre-processing pipeline for multi-keyword search + boolean operators
-// TODO: - Debounce input (for pre-processing pipeline)
-// TODO: - (React support) Parse JSX to extract story meta, JSDocs
-
 import React, { useEffect, useRef, useState } from "react";
-// import { Document } from "flexsearch";
 import { SearchDoc } from "src/scripts/buildTextIndex";
 import { getResultHighlightSnippet } from "src/utils/getHighlightSnippet";
 import IndexNotFound from "src/ui/IndexNotFound";
@@ -25,7 +9,6 @@ import ModalBackdrop from "src/ui/search-modal/ModalBackdrop";
 import MiniSearch from "minisearch";
 
 export const SearchBar = () => {
-    const [index, setIndex] = useState<Document | null>(null);
     const [miniIndex, setMiniIndex] = useState<MiniSearch<SearchDoc> | null>(null);
     const [results, setResults] = useState<SearchDoc[]>([]);
     const [overlayOpen, setOverlayOpen] = useState<boolean>(false);
@@ -66,15 +49,6 @@ export const SearchBar = () => {
                 const miniIndexRes = await fetch("text-search-docs.json").then(r => r.json()) as SearchDoc[]
                 console.log("mini index res", miniIndexRes);
 
-                // const restored = new Document({
-                //     tokenize: "forward",
-                //     document: {
-                //         id: 'id',
-                //         index: ['title', 'content'],
-                //         store: ['id', 'title', 'content', 'snippet', 'sourcePath', 'metaTitle', 'type']
-                //     }
-                // });
-
                 const mini = new MiniSearch({
                     fields: ['title', 'content'],
                     storeFields: ['id', 'title', 'content', 'snippet', 'sourcePath', 'type', 'metaTitle'],
@@ -103,27 +77,7 @@ export const SearchBar = () => {
         load().catch(err => console.error("❌ Failed to load search index:", err));
     }, []);
 
-    // 🔍 Run actual FlexSearch on input change
-    // useEffect(() => {
-    //     if (!index || overlayQuery.length <= 1) {
-    //         console.warn("No index or query length <= 1");
-    //         setResults([]);
-    //         return;
-    //     }
-
-    //     const res = index.search(overlayQuery, { enrich: true, suggest: true, limit: 10 }) as any;
-    //     // const res = mini.search(overlayQuery, ) as any;
-    //     const unique = new Map<string, SearchDoc>();
-
-    //     for (const fieldResult of res) {
-    //         for (const entry of fieldResult.result) {
-    //             if (entry?.doc?.id) {
-    //                 unique.set(entry.doc.id, entry.doc as SearchDoc);
-    //             }
-    //         }
-    //     }
-    //     setResults([...unique.values()]);
-    // }, [overlayQuery, index]);
+    // 🔍 Run actual minisearch on input change
     useEffect(() => {
         if (!miniIndex || overlayQuery.length <= 1) {
             setResults([]);

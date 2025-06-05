@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+// TODO: Switch to double quotes + fix extraneous indent in addon array
 import path from 'path';
 import { Project, SyntaxKind, ObjectLiteralExpression, ArrayLiteralExpression, PropertyAssignment } from 'ts-morph';
 import fs from 'fs';

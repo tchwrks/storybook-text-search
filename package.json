@@ -1,0 +1,116 @@
+{
+  "name": "@tchwrks/storybook-text-search",
+  "version": "0.0.0",
+  "description": "A Storybook addon that enables full-text search through your MDX files.",
+  "keywords": [
+    "storybook-addons"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/storybookjs/storybook-addon-kit"
+  },
+  "type": "module",
+  "license": "MIT",
+  "author": "package-author",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./preset": "./dist/preset.js",
+    "./manager": "./dist/manager.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "*.js",
+    "*.d.ts"
+  ],
+  "bin": {
+    "storybook-search-build-index": "./dist/bin/build.js",
+    "storybook-search-init": "./dist/bin/init.js"
+  },
+  "scripts": {
+    "search:build-index": "node dist/bin/build.js",
+    "postinstall": "node scripts/welcome.js",
+    "build": "tsup",
+    "build:watch": "npm run build -- --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "run-p build:watch \"storybook --quiet\"",
+    "prerelease": "zx scripts/prepublish-checks.js",
+    "release": "npm run build && auto shipit",
+    "eject-ts": "zx scripts/eject-typescript.js",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^3.1.0",
+    "fast-glob": "^3.3.3",
+    "focus-trap-react": "^11.0.4",
+    "minisearch": "^7.1.2",
+    "remark-parse": "^11.0.0",
+    "ts-morph": "^25.0.1",
+    "unified": "^11.0.5"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "0.0.0-pr-26654-sha-49d01553",
+    "@storybook/addon-interactions": "0.0.0-pr-26654-sha-49d01553",
+    "@storybook/addon-links": "0.0.0-pr-26654-sha-49d01553",
+    "@storybook/blocks": "0.0.0-pr-26654-sha-49d01553",
+    "@storybook/icons": "^1.2.10",
+    "@storybook/react": "0.0.0-pr-26654-sha-49d01553",
+    "@storybook/react-vite": "0.0.0-pr-26654-sha-49d01553",
+    "@storybook/test": "0.0.0-pr-26654-sha-49d01553",
+    "@types/node": "^18.15.0",
+    "@types/react": "^18.2.65",
+    "@types/react-dom": "^18.2.21",
+    "@types/webpack": "^5.28.5",
+    "@vitejs/plugin-react": "^4.2.1",
+    "auto": "^11.1.1",
+    "boxen": "^7.1.1",
+    "dedent": "^1.5.1",
+    "esbuild": "0.25.5",
+    "npm-run-all2": "^6.2.3",
+    "prettier": "^3.3.3",
+    "prompts": "^2.4.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "0.0.0-pr-26654-sha-49d01553",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4",
+    "vite": "^5.3.5",
+    "zx": "^7.2.3"
+  },
+  "peerDependencies": {
+    "storybook": "^8.3.0 || 0.0.0-pr-26654-sha-49d01553"
+  },
+  "overrides": {
+    "storybook": "0.0.0-pr-26654-sha-49d01553"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bundler": {
+    "exportEntries": [
+      "src/index.ts"
+    ],
+    "managerEntries": [
+      "src/manager.tsx"
+    ],
+    "nodeEntries": [
+      "src/preset.ts",
+      "src/bin/init.js",
+      "src/bin/build.js"
+    ]
+  },
+  "storybook": {
+    "displayName": "Text Search",
+    "supportedFrameworks": [
+      "supported-frameworks"
+    ],
+    "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
+  },
+  "packageManager": "yarn@4.9.1+sha256.6ffc213b3ce0af5c92507977d9537ea3cc085caa52d1c3f08e94d613407fed19"
+}

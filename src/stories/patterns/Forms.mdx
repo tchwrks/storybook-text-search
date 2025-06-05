@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Patterns/Forms" />
+
+# Form Patterns
+
+Learn about our form design patterns and implementation guidelines.
+
+## Form Structure
+
+- Clear visual hierarchy
+- Logical grouping
+- Consistent spacing
+- Proper validation
+
+## Input States
+
+Every form input should support:
+1. Default
+2. Focus
+3. Error
+4. Disabled
+5. Loading
+
+## Validation
+
+We follow these validation principles:
+- Immediate feedback
+- Clear error messages
+- Helpful suggestions
+- Accessible notifications
+
+## Example Implementation
+
+```jsx
+<Form onSubmit={handleSubmit}>
+  <FormField
+    label="Email"
+    error={errors.email}
+    required
+  >
+    <Input type="email" />
+  </FormField>
+</Form>
+```

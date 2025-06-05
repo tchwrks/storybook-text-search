@@ -1,0 +1,125 @@
+import { Meta } from '@storybook/blocks';
+import { Table } from '../doc-blocks/Table';
+import { DosDonts } from '../doc-blocks/DosDonts';
+
+<Meta title="Patterns/Component Composition" />
+
+# Component Composition Patterns
+
+Learn about our recommended patterns for composing React components.
+
+## Composition Strategies
+
+<Table 
+    columns={[
+        { key: "pattern", header: "Pattern" },
+        { key: "description", header: "Description" },
+        { key: "useCase", header: "Use Case" }
+    ]}
+    data={[
+        { 
+            pattern: "Compound Components", 
+            description: "Components that work together", 
+            useCase: "Complex UI widgets" 
+        },
+        { 
+            pattern: "Render Props", 
+            description: "Pass rendering logic as props", 
+            useCase: "Shared component logic" 
+        },
+        { 
+            pattern: "Higher-Order Components", 
+            description: "Wrap components to enhance them", 
+            useCase: "Cross-cutting concerns" 
+        },
+        { 
+            pattern: "Custom Hooks", 
+            description: "Extract reusable logic", 
+            useCase: "Shared stateful logic" 
+        }
+    ]}
+/>
+
+## Component Design
+
+<DosDonts 
+    dos={[
+        {
+            title: "Compound Components",
+            description: "Create components that work together seamlessly",
+            code: `<Select>
+  <Select.Trigger>Choose option</Select.Trigger>
+  <Select.Content>
+    <Select.Option>Option 1</Select.Option>
+    <Select.Option>Option 2</Select.Option>
+  </Select.Content>
+</Select>`
+        },
+        {
+            title: "Flexible Props",
+            description: "Allow component customization through props",
+            code: `function Button({ 
+  variant = 'primary',
+  size = 'medium',
+  children,
+  ...props 
+}) {
+  return (
+    <button className={cx(styles[variant], styles[size])} {...props}>
+      {children}
+    </button>
+  );
+}`
+        }
+    ]}
+    donts={[
+        {
+            title: "Prop Drilling",
+            description: "Avoid passing props through multiple levels",
+            code: `// Don't do this
+function GrandChild({ theme }) {  // Prop drilled through parent
+  return <div style={{ color: theme.color }} />;
+}`
+        },
+        {
+            title: "Tight Coupling",
+            description: "Avoid components that can't work independently",
+            code: `// Don't couple components tightly
+function TableRow({ data, parentTableState }) {  // Bad
+  return <tr onClick={() => parentTableState.sort()} />;
+}`
+        }
+    ]}
+/>
+
+## Component Communication
+
+<Table 
+    columns={[
+        { key: "method", header: "Method" },
+        { key: "example", header: "Example" },
+        { key: "bestFor", header: "Best For" }
+    ]}
+    data={[
+        { 
+            method: "Context", 
+            example: "ThemeContext, UserContext", 
+            bestFor: "Global app state" 
+        },
+        { 
+            method: "Event Handlers", 
+            example: "onClick, onChange", 
+            bestFor: "Parent-child communication" 
+        },
+        { 
+            method: "Refs", 
+            example: "useImperativeHandle", 
+            bestFor: "Imperative actions" 
+        },
+        { 
+            method: "State Management", 
+            example: "Redux, Zustand", 
+            bestFor: "Complex state sharing" 
+        }
+    ]}
+/> 

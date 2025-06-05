@@ -1,0 +1,179 @@
+import { Meta } from '@storybook/blocks';
+import { Table } from '../doc-blocks/Table';
+import { DosDonts } from '../doc-blocks/DosDonts';
+import { VoiceExample } from '../doc-blocks/VoiceExample';
+
+<Meta title="Brand/Voice and Tone" />
+
+# Voice and Tone
+
+Our brand voice is the distinctive way we communicate with our audience. It reflects our personality, values, and the relationship we want to build with our users.
+
+## Voice Characteristics
+
+<Table 
+    columns={[
+        { key: "trait", header: "Trait" },
+        { key: "description", header: "Description" },
+        { key: "example", header: "Example" }
+    ]}
+    data={[
+        { 
+            trait: "Confident", 
+            description: "We speak with authority but not arrogance", 
+            example: "We're transforming how teams collaborate" 
+        },
+        { 
+            trait: "Approachable", 
+            description: "We're friendly and welcoming", 
+            example: "Need help? We're here for you" 
+        },
+        { 
+            trait: "Clear", 
+            description: "We communicate directly without jargon", 
+            example: "Your data is backed up automatically" 
+        },
+        { 
+            trait: "Empowering", 
+            description: "We focus on user benefits and capabilities", 
+            example: "You can now customize your workspace" 
+        }
+    ]}
+/>
+
+## Writing Examples
+
+<VoiceExample
+    title="Error Messages"
+    description="How we communicate technical issues in a human-friendly way"
+    examples={[
+        {
+            tone: "Friendly but Professional",
+            description: "We acknowledge the issue while maintaining confidence",
+            original: "Error 404: Requested page not found on server",
+            branded: "Hmm, we can't find that page. Let's get you back on track!"
+        },
+        {
+            tone: "Helpful and Proactive",
+            description: "We provide clear next steps",
+            original: "Failed to save changes due to network error",
+            branded: "Your changes haven't been saved yet. Check your connection and try again – we'll wait!"
+        }
+    ]}
+/>
+
+<VoiceExample
+    title="Product Features"
+    description="How we present functionality in an engaging way"
+    examples={[
+        {
+            tone: "Benefit-focused",
+            description: "We emphasize user value over technical details",
+            original: "Real-time data synchronization across devices",
+            branded: "Your work stays in sync everywhere, so you never miss a beat"
+        },
+        {
+            tone: "Engaging and Clear",
+            description: "We make complex features approachable",
+            original: "Advanced analytics with customizable metrics",
+            branded: "See your success in numbers that matter to you"
+        }
+    ]}
+/>
+
+## Tone by Context
+
+<Table 
+    columns={[
+        { key: "context", header: "Context" },
+        { key: "tone", header: "Tone" },
+        { key: "example", header: "Example" }
+    ]}
+    data={[
+        { 
+            context: "Success Messages", 
+            tone: "Celebratory", 
+            example: "🎉 Great job! Your project is live" 
+        },
+        { 
+            context: "Error States", 
+            tone: "Reassuring", 
+            example: "Don't worry – we'll sort this out together" 
+        },
+        { 
+            context: "Documentation", 
+            tone: "Clear and Helpful", 
+            example: "Here's how to get started in three easy steps" 
+        },
+        { 
+            context: "Marketing", 
+            tone: "Inspiring", 
+            example: "Transform your workflow today" 
+        }
+    ]}
+/>
+
+## Best Practices
+
+<DosDonts 
+    dos={[
+        {
+            title: "Be Consistent",
+            description: "Maintain voice across platforms",
+            code: `// Success message
+"Your profile looks great! Ready to connect?"`
+        },
+        {
+            title: "Stay Positive",
+            description: "Focus on solutions and possibilities",
+            code: `// Feature introduction
+"Discover new ways to collaborate"`
+        }
+    ]}
+    donts={[
+        {
+            title: "Avoid Jargon",
+            description: "Don't use technical terms unnecessarily",
+            code: `// Too technical
+"Error: Database query failed to execute"`
+        },
+        {
+            title: "Don't Be Robotic",
+            description: "Avoid mechanical responses",
+            code: `// Too impersonal
+"Your request has been processed"`
+        }
+    ]}
+/>
+
+## Writing Guidelines
+
+<Table 
+    columns={[
+        { key: "element", header: "Element" },
+        { key: "guideline", header: "Guideline" },
+        { key: "example", header: "Example" }
+    ]}
+    data={[
+        { 
+            element: "Headlines", 
+            guideline: "Active voice, benefit-focused", 
+            example: "Build Better, Ship Faster" 
+        },
+        { 
+            element: "Button Text", 
+            guideline: "Action-oriented, concise", 
+            example: "Start Creating" 
+        },
+        { 
+            element: "Form Labels", 
+            guideline: "Clear, descriptive", 
+            example: "Choose Your Plan" 
+        },
+        { 
+            element: "Help Text", 
+            guideline: "Supportive, straightforward", 
+            example: "Enter your work email to get started" 
+        }
+    ]}
+/> 

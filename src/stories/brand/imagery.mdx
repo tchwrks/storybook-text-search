@@ -1,0 +1,173 @@
+import { Meta } from '@storybook/blocks';
+import { Table } from '../doc-blocks/Table';
+import { DosDonts } from '../doc-blocks/DosDonts';
+import { ImageGuidelines } from '../doc-blocks/ImageGuidelines';
+
+<Meta title="Brand/Imagery" />
+
+# Imagery Guidelines
+
+Our visual language helps tell our story and reinforces our brand identity. These guidelines ensure consistency across all visual communications.
+
+## Photography Style
+
+<ImageGuidelines
+    category="Product Photography"
+    description="How we showcase our product in use"
+    examples={[
+        {
+            url: "/images/product-in-context.jpg",
+            caption: "Product in Context",
+            usage: "Used for marketing materials and product pages",
+            principles: [
+                "Natural lighting with soft shadows",
+                "Real work environments",
+                "Clean, uncluttered backgrounds",
+                "Shows product benefits in action"
+            ]
+        },
+        {
+            url: "/images/feature-detail.jpg",
+            caption: "Feature Details",
+            usage: "Used in documentation and tutorials",
+            principles: [
+                "Clear focus on specific features",
+                "High contrast for readability",
+                "Consistent cropping and composition",
+                "Minimal distractions"
+            ]
+        }
+    ]}
+/>
+
+## Illustration Style
+
+<Table 
+    columns={[
+        { key: "element", header: "Element" },
+        { key: "guidelines", header: "Guidelines" },
+        { key: "usage", header: "Usage" }
+    ]}
+    data={[
+        { 
+            element: "Icons", 
+            guidelines: "Simple, geometric, consistent stroke width", 
+            usage: "Navigation, feature highlights, UI elements" 
+        },
+        { 
+            element: "Spot Illustrations", 
+            guidelines: "Flat design, brand colors, simple shapes", 
+            usage: "Empty states, onboarding, marketing" 
+        },
+        { 
+            element: "Technical Diagrams", 
+            guidelines: "Clear hierarchy, labeled elements, grid-aligned", 
+            usage: "Documentation, process flows, architecture" 
+        }
+    ]}
+/>
+
+## Image Specifications
+
+<Table 
+    columns={[
+        { key: "type", header: "Type" },
+        { key: "dimensions", header: "Dimensions" },
+        { key: "format", header: "Format" },
+        { key: "maxSize", header: "Max Size" }
+    ]}
+    data={[
+        { 
+            type: "Hero Images", 
+            dimensions: "1920x1080px", 
+            format: "JPG/WebP", 
+            maxSize: "400KB" 
+        },
+        { 
+            type: "Thumbnails", 
+            dimensions: "400x300px", 
+            format: "PNG/WebP", 
+            maxSize: "100KB" 
+        },
+        { 
+            type: "Icons", 
+            dimensions: "24x24px, 48x48px", 
+            format: "SVG", 
+            maxSize: "10KB" 
+        },
+        { 
+            type: "Blog Images", 
+            dimensions: "800x600px", 
+            format: "JPG/WebP", 
+            maxSize: "200KB" 
+        }
+    ]}
+/>
+
+## Best Practices
+
+<DosDonts 
+    dos={[
+        {
+            title: "Optimize for Web",
+            description: "Compress images without visible quality loss",
+            code: "imagemin --quality 85 image.jpg"
+        },
+        {
+            title: "Use Modern Formats",
+            description: "Provide WebP with fallbacks",
+            code: `<picture>
+  <source type="image/webp" srcset="image.webp">
+  <img src="image.jpg" alt="Description">
+</picture>`
+        }
+    ]}
+    donts={[
+        {
+            title: "Avoid Stock Clichés",
+            description: "Don't use obvious stock photography",
+            code: "// Generic handshake photos, forced diversity"
+        },
+        {
+            title: "Skip Alt Text",
+            description: "Don't forget accessibility",
+            code: `// Bad
+<img src="chart.png">
+
+// Good
+<img src="chart.png" alt="Q4 Revenue Growth">`
+        }
+    ]}
+/>
+
+## Image Categories
+
+<Table 
+    columns={[
+        { key: "category", header: "Category" },
+        { key: "purpose", header: "Purpose" },
+        { key: "examples", header: "Examples" }
+    ]}
+    data={[
+        { 
+            category: "Interface", 
+            purpose: "Show product features and UI", 
+            examples: "Screenshots, feature previews, workflow demos" 
+        },
+        { 
+            category: "Conceptual", 
+            purpose: "Illustrate abstract concepts", 
+            examples: "Process diagrams, data flow, architecture" 
+        },
+        { 
+            category: "Environmental", 
+            purpose: "Show product in context", 
+            examples: "User workspace, team collaboration, real usage" 
+        },
+        { 
+            category: "Brand Assets", 
+            purpose: "Represent brand identity", 
+            examples: "Logos, mascots, branded illustrations" 
+        }
+    ]}
+/> 

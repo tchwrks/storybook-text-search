@@ -1,0 +1,103 @@
+import { Meta } from "@storybook/addon-docs";
+import { Table } from "../doc-blocks/Table";
+
+<Meta title="API-Documentation/API-Errors" />
+
+# API Errors
+
+API errors are the building blocks of design systems. They are used to create consistent and predictable design patterns.
+
+## Error Types
+
+API errors are categorized into three types:
+
+- 400 Bad Request
+- 401 Unauthorized
+- 403 Forbidden
+- 404 Not Found
+
+Each controller / API route group will return one of the above error types with a context-specific message.
+
+## Auth Errors
+
+<Table 
+    columns={[
+        { key: "errorCode", header: "Error Code" },
+        { key: "message", header: "Message" },
+        { key: "sampleUserAction", header: "Sample User Action" },
+        { key: "sampleUserFacingMessage", header: "Sample User-Facing Message" },
+    ]}
+    data={[
+        { errorCode: "401", message: "Unauthorized", sampleUserAction: "User must login", sampleUserFacingMessage: "Please login to continue" },
+        { errorCode: "403", message: "Forbidden", sampleUserAction: "User must have permission", sampleUserFacingMessage: "You do not have permission to access this resource" },
+        { errorCode: "404", message: "Not Found", sampleUserAction: "User must have permission", sampleUserFacingMessage: "The resource you are looking for does not exist" },
+    ]}
+/>
+
+## User Errors
+
+<Table 
+    columns={[
+        { key: "errorCode", header: "Error Code" },
+        { key: "message", header: "Message" },
+        { key: "sampleUserAction", header: "Sample User Action" },
+        { key: "sampleUserFacingMessage", header: "Sample User-Facing Message" },
+    ]}
+    data={[
+        { errorCode: "400", message: "Bad Request", sampleUserAction: "User must provide valid credentials", sampleUserFacingMessage: "Please provide a valid email and password" },
+        { errorCode: "401", message: "Unauthorized", sampleUserAction: "User must login", sampleUserFacingMessage: "Please login to continue" },
+        { errorCode: "403", message: "Forbidden", sampleUserAction: "User must have permission", sampleUserFacingMessage: "You do not have permission to access this resource" },
+        { errorCode: "404", message: "Not Found", sampleUserAction: "User must have permission", sampleUserFacingMessage: "The resource you are looking for does not exist" },
+    ]}
+/>
+
+## Product Errors
+
+<Table 
+    columns={[
+        { key: "errorCode", header: "Error Code" },
+        { key: "message", header: "Message" },
+        { key: "sampleUserAction", header: "Sample User Action" },
+        { key: "sampleUserFacingMessage", header: "Sample User-Facing Message" },
+    ]}
+    data={[
+        { errorCode: "400", message: "Bad Request", sampleUserAction: "User must provide valid credentials", sampleUserFacingMessage: "Please provide a valid email and password" },
+        { errorCode: "401", message: "Unauthorized", sampleUserAction: "User must login", sampleUserFacingMessage: "Please login to continue" },
+        { errorCode: "403", message: "Forbidden", sampleUserAction: "User must have permission", sampleUserFacingMessage: "You do not have permission to access this resource" },
+        { errorCode: "404", message: "Not Found", sampleUserAction: "User must have permission", sampleUserFacingMessage: "The resource you are looking for does not exist" },
+    ]}
+/>
+
+## Order Errors
+
+<Table 
+    columns={[
+        { key: "errorCode", header: "Error Code" },
+        { key: "message", header: "Message" },
+        { key: "sampleUserAction", header: "Sample User Action" },
+        { key: "sampleUserFacingMessage", header: "Sample User-Facing Message" },
+    ]}
+    data={[
+        { errorCode: "400", message: "Bad Request", sampleUserAction: "User must provide valid credentials", sampleUserFacingMessage: "Please provide a valid email and password" },
+        { errorCode: "401", message: "Unauthorized", sampleUserAction: "User must login", sampleUserFacingMessage: "Please login to continue" },
+        { errorCode: "403", message: "Forbidden", sampleUserAction: "User must have permission", sampleUserFacingMessage: "You do not have permission to access this resource" },
+        { errorCode: "404", message: "Not Found", sampleUserAction: "User must have permission", sampleUserFacingMessage: "The resource you are looking for does not exist" },
+    ]}
+/>
+
+## Payment Errors
+
+<Table 
+    columns={[
+        { key: "errorCode", header: "Error Code" },
+        { key: "message", header: "Message" },
+        { key: "sampleUserAction", header: "Sample User Action" },
+        { key: "sampleUserFacingMessage", header: "Sample User-Facing Message" },
+    ]}
+    data={[
+        { errorCode: "400", message: "Bad Request", sampleUserAction: "User must provide valid credentials", sampleUserFacingMessage: "Please provide a valid email and password" },
+        { errorCode: "401", message: "Unauthorized", sampleUserAction: "User must login", sampleUserFacingMessage: "Please login to continue" },
+        { errorCode: "403", message: "Forbidden", sampleUserAction: "User must have permission", sampleUserFacingMessage: "You do not have permission to access this resource" },
+        { errorCode: "404", message: "Not Found", sampleUserAction: "User must have permission", sampleUserFacingMessage: "The resource you are looking for does not exist" },
+    ]}
+/>

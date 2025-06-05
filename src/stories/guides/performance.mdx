@@ -1,0 +1,54 @@
+import { Meta } from '@storybook/blocks';
+import { Table } from '../doc-blocks/Table';
+import { DosDonts } from '../doc-blocks/DosDonts';
+
+<Meta title="Guides/Performance" />
+
+# Performance Guidelines
+
+Best practices for building high-performance applications.
+
+## Performance Metrics
+
+<Table 
+    columns={[
+        { key: "metric", header: "Metric" },
+        { key: "target", header: "Target" },
+        { key: "impact", header: "User Impact" }
+    ]}
+    data={[
+        { metric: "First Contentful Paint", target: "< 1.8s", impact: "Initial page load perception" },
+        { metric: "Time to Interactive", target: "< 3.9s", impact: "When users can interact" },
+        { metric: "Total Blocking Time", target: "< 300ms", impact: "Input responsiveness" },
+        { metric: "Cumulative Layout Shift", target: "< 0.1", impact: "Visual stability" }
+    ]}
+/>
+
+## Optimization Techniques
+
+<DosDonts 
+    dos={[
+        {
+            title: "Code Splitting",
+            description: "Split code into smaller chunks",
+            code: "import('./Component').then()"
+        },
+        {
+            title: "Asset Optimization",
+            description: "Optimize and compress assets",
+            code: "Use WebP images, minify JS"
+        }
+    ]}
+    donts={[
+        {
+            title: "Large Bundles",
+            description: "Don't send unnecessary code",
+            code: "import entire lodash library"
+        },
+        {
+            title: "Unoptimized Images",
+            description: "Don't use large images",
+            code: "5MB hero image"
+        }
+    ]}
+/> 

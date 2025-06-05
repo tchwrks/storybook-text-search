@@ -1,0 +1,54 @@
+import { Meta } from '@storybook/blocks';
+import { DosDonts } from '../doc-blocks/DosDonts';
+import { Table } from '../doc-blocks/Table';
+
+<Meta title="Patterns/Form Validation" />
+
+# Form Validation Patterns
+
+Best practices for implementing form validation across our applications.
+
+## Validation Timing
+
+<Table 
+    columns={[
+        { key: "timing", header: "Validation Timing" },
+        { key: "useCase", header: "Use Case" },
+        { key: "example", header: "Example" }
+    ]}
+    data={[
+        { timing: "On Blur", useCase: "Simple text inputs", example: "Email format validation" },
+        { timing: "On Input", useCase: "Password strength", example: "Character count requirements" },
+        { timing: "On Submit", useCase: "Complex business rules", example: "Credit card validation" },
+        { timing: "Real-time", useCase: "Username availability", example: "Async database check" }
+    ]}
+/>
+
+## Error Message Guidelines
+
+<DosDonts 
+    dos={[
+        {
+            title: "Be Specific",
+            description: "Tell users exactly what went wrong and how to fix it",
+            code: "Password must be at least 8 characters long"
+        },
+        {
+            title: "Use Positive Tone",
+            description: "Guide users towards the solution",
+            code: "Try using a stronger password with numbers and symbols"
+        }
+    ]}
+    donts={[
+        {
+            title: "Be Vague",
+            description: "Don't leave users guessing",
+            code: "Invalid input"
+        },
+        {
+            title: "Be Technical",
+            description: "Avoid technical jargon",
+            code: "Error: RegExp validation failed"
+        }
+    ]}
+/> 

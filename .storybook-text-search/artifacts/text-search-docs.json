@@ -1,0 +1,218 @@
+[
+  {
+    "id": "src/stories/Introduction",
+    "title": "Introduction",
+    "content": "Example/Introduction @tchwrks/storybook-text-search A Storybook addon that enables full-text search through your MDX files. 🔍 Builds an index at startup 💡 Integrates a search bar into the Storybook manager UI as a toolbar ♻️ Automatically rebuilds index on hot reload ⚙️ Works with both Vite and Webpack Storybook builders ✍️ Written in TypeScript using the official Addon Kit Configure plugin Build colors flow Presets for popular tools Easy setup for TypeScript, SCSS and more. Build configuration How to customize webpack and Babel Styling How to load and configure CSS libraries Data Providers and mocking for data libraries Learn repo direction code comments Storybook documentation Configure, customize, and extend In-depth guides Best practices from leading teams GitHub project View the source and add issues Discord chat Chat with maintainers and the community Tip Edit the Markdown in stories/Introduction.stories.mdx",
+    "snippet": "Example/Introduction @tchwrks/storybook-text-search A Storybook addon that enables full-text search through your MDX files. 🔍 Builds an index at star…",
+    "sourcePath": "./src/stories/Introduction.mdx",
+    "metaTitle": "Example/Introduction",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/api-documentation/API-Errors",
+    "title": "API-Errors",
+    "content": "API-Documentation/API-Errors API Errors API errors are the building blocks of design systems. They are used to create consistent and predictable design patterns. Error Types API errors are categorized into three types: 400 Bad Request 401 Unauthorized 403 Forbidden 404 Not Found Each controller / API route group will return one of the above error types with a context-specific message. Auth Errors Error Code Message Sample User Action Sample User-Facing Message 401 Unauthorized User must login Please login to continue 403 Forbidden User must have permission You do not have permission to access this resource 404 Not Found The resource you are looking for does not exist User Errors 400 Bad Request User must provide valid credentials Please provide a valid email and password Product Errors Order Errors Payment Errors",
+    "snippet": "API-Documentation/API-Errors API Errors API errors are the building blocks of design systems. They are used to create consistent and predictable desig…",
+    "sourcePath": "./src/stories/api-documentation/API-Errors.mdx",
+    "metaTitle": "API-Documentation/API-Errors",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/brand/imagery",
+    "title": "imagery",
+    "content": "Brand/Imagery Imagery Guidelines Our visual language helps tell our story and reinforces our brand identity. These guidelines ensure consistency across all visual communications. Photography Style Illustration Style Element Guidelines Usage Icons Simple, geometric, consistent stroke width Navigation, feature highlights, UI elements Spot Illustrations Flat design, brand colors, simple shapes Empty states, onboarding, marketing Technical Diagrams Clear hierarchy, labeled elements, grid-aligned Documentation, process flows, architecture Image Specifications Type Dimensions Format Max Size Hero Images 1920x1080px JPG/WebP 400KB Thumbnails 400x300px PNG/WebP 100KB 24x24px, 48x48px SVG 10KB Blog Images 800x600px 200KB Best Practices Image Categories Category Purpose Examples Interface Show product features and UI Screenshots, feature previews, workflow demos Conceptual Illustrate abstract concepts Process diagrams, data flow, architecture Environmental Show product in context User workspace, team collaboration, real usage Brand Assets Represent brand identity Logos, mascots, branded illustrations",
+    "snippet": "Brand/Imagery Imagery Guidelines Our visual language helps tell our story and reinforces our brand identity. These guidelines ensure consistency acros…",
+    "sourcePath": "./src/stories/brand/imagery.mdx",
+    "metaTitle": "Brand/Imagery",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/brand/voice-and-tone",
+    "title": "voice-and-tone",
+    "content": "Brand/Voice and Tone Voice and Tone Our brand voice is the distinctive way we communicate with our audience. It reflects our personality, values, and the relationship we want to build with our users. Voice Characteristics Trait Description Example Confident We speak with authority but not arrogance We're transforming how teams collaborate Approachable We're friendly and welcoming Need help? We're here for you Clear We communicate directly without jargon Your data is backed up automatically Empowering We focus on user benefits and capabilities You can now customize your workspace Writing Examples Error Messages Product Features Tone by Context Context Tone Success Messages Celebratory 🎉 Great job! Your project is live Error States Reassuring Don't worry – we'll sort this out together Documentation Clear and Helpful Here's how to get started in three easy steps Marketing Inspiring Transform your workflow today Best Practices Writing Guidelines Element Guideline Headlines Active voice, benefit-focused Build Better, Ship Faster Button Text Action-oriented, concise Start Creating Form Labels Clear, descriptive Choose Your Plan Help Text Supportive, straightforward Enter your work email to get started",
+    "snippet": "Brand/Voice and Tone Voice and Tone Our brand voice is the distinctive way we communicate with our audience. It reflects our personality, values, and …",
+    "sourcePath": "./src/stories/brand/voice-and-tone.mdx",
+    "metaTitle": "Brand/Voice and Tone",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/foundation/colors",
+    "title": "colors",
+    "content": "Foundation/Colors Color System Our color system is built to ensure consistency, accessibility, and visual harmony across all our products. Brand Colors Primary Brand Colors Primary #0066CC Main brand color, used for primary actions and key visuals Secondary #4C9AFF Supporting brand color, used for secondary elements Accent #00875A Used for highlighting and special elements Semantic Colors Status Colors Success #22C55E Positive actions and success states Warning #F59E0B Warnings and cautionary states Error #EF4444 Error states and destructive actions Info #3B82F6 Informational states and help content Neutral Scale Grayscale Gray 900 #111827 Primary text Gray 700 #374151 Secondary text Gray 500 #6B7280 Disabled text Gray 300 #D1D5DB Borders Gray 100 #F3F4F6 Backgrounds",
+    "snippet": "Foundation/Colors Color System Our color system is built to ensure consistency, accessibility, and visual harmony across all our products. Brand Color…",
+    "sourcePath": "./src/stories/foundation/colors.mdx",
+    "metaTitle": "Foundation/Colors",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/foundation/spacing-and-sizing",
+    "title": "spacing-and-sizing",
+    "content": "Foundation/Spacing and Sizing Spacing and Sizing Learn about our systematic approach to spacing and component sizing across the application. Spacing Scale Usage Guidelines Scale Usage Example 2xs (4px) Minimal spacing, borders, thin lines Border width, icon padding xs (8px) Tight spacing between related elements Button icon gap, list item spacing sm (12px) Default spacing for compact layouts Form field spacing, card padding md (16px) Standard component spacing Section padding, grid gap lg (24px) Generous spacing between sections Section margins, large component padding xl (32px) Major layout spacing Page sections, large component margins 2xl (48px) Significant layout divisions Hero sections, large vertical spacing 3xl (64px) Maximum layout spacing Page margins, major section divisions Best Practices Component Sizing Component Size Token Value Icon Button sm 32px (2rem) Regular Button md 40px (2.5rem) Large Button lg 48px (3rem) Input Field Checkbox 16px (1rem) Modal Padding xl Card Padding 24px (1.5rem) Tooltip Padding xs 8px (0.5rem)",
+    "snippet": "Foundation/Spacing and Sizing Spacing and Sizing Learn about our systematic approach to spacing and component sizing across the application. Spacing S…",
+    "sourcePath": "./src/stories/foundation/spacing-and-sizing.mdx",
+    "metaTitle": "Foundation/Spacing and Sizing",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/foundation/typography",
+    "title": "typography",
+    "content": "Foundation/Typography Typography System Our typography system is designed to create clear hierarchies and maintain readability across all screen sizes. Type Scale Display 48px 1.1 Weight: 700 Display Heading Heading 1 36px 1.2 Page Heading Heading 2 30px 1.3 Weight: 600 Section Heading Heading 3 24px 1.4 Subsection Heading Body Large 18px 1.6 Weight: 400 Large body text for improved readability in key areas. Body 16px 1.5 Default body text used for most content and descriptions. Small 14px Small text used for captions and supporting information. Font Weights Weight Name Usage 400 Regular Body text, paragraphs, and most content 500 Medium Emphasis within paragraphs, button text 600 Semibold Subheadings, strong emphasis 700 Bold Main headings, maximum emphasis",
+    "snippet": "Foundation/Typography Typography System Our typography system is designed to create clear hierarchies and maintain readability across all screen sizes…",
+    "sourcePath": "./src/stories/foundation/typography.mdx",
+    "metaTitle": "Foundation/Typography",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/patterns/Forms",
+    "title": "Forms",
+    "content": "Patterns/Forms Form Patterns Learn about our form design patterns and implementation guidelines. Form Structure Clear visual hierarchy Logical grouping Consistent spacing Proper validation Input States Every form input should support: Default Focus Error Disabled Loading Validation We follow these validation principles: Immediate feedback Clear error messages Helpful suggestions Accessible notifications Example Implementation",
+    "snippet": "Patterns/Forms Form Patterns Learn about our form design patterns and implementation guidelines. Form Structure Clear visual hierarchy Logical groupin…",
+    "sourcePath": "./src/stories/patterns/Forms.mdx",
+    "metaTitle": "Patterns/Forms",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/patterns/component-composition",
+    "title": "component-composition",
+    "content": "Patterns/Component Composition Component Composition Patterns Learn about our recommended patterns for composing React components. Composition Strategies Pattern Description Use Case Compound Components Components that work together Complex UI widgets Render Props Pass rendering logic as props Shared component logic Higher-Order Components Wrap components to enhance them Cross-cutting concerns Custom Hooks Extract reusable logic Shared stateful logic Component Design Component Communication Method Example Best For Context ThemeContext, UserContext Global app state Event Handlers onClick, onChange Parent-child communication Refs useImperativeHandle Imperative actions State Management Redux, Zustand Complex state sharing",
+    "snippet": "Patterns/Component Composition Component Composition Patterns Learn about our recommended patterns for composing React components. Composition Strateg…",
+    "sourcePath": "./src/stories/patterns/component-composition.mdx",
+    "metaTitle": "Patterns/Component Composition",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/patterns/data-tables",
+    "title": "data-tables",
+    "content": "Patterns/Data Tables Data Table Patterns Guidelines for displaying and managing tabular data effectively. Table Features Feature Purpose Implementation Sorting Order data by column values Click column headers Filtering Show subset of data Column filter dropdowns Pagination Manage large datasets Page size + navigation Selection Bulk actions on rows Checkboxes + action menu Column Resize Customize column widths Draggable column edges Best Practices",
+    "snippet": "Patterns/Data Tables Data Table Patterns Guidelines for displaying and managing tabular data effectively. Table Features Feature Purpose Implementatio…",
+    "sourcePath": "./src/stories/patterns/data-tables.mdx",
+    "metaTitle": "Patterns/Data Tables",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/patterns/error-handling",
+    "title": "error-handling",
+    "content": "Patterns/Error Handling Error Handling Patterns Learn about our standardized approach to handling errors across the application. Error Types Error Type When to Use Example ValidationError User input validation failures Invalid email format NetworkError API or network-related issues Failed to fetch data AuthenticationError Auth-related failures Token expired BusinessLogicError Domain-specific rules violations Insufficient funds Error Handling Best Practices Error Recovery Patterns Pattern Description Use Case Retry with Backoff Automatically retry failed operations with increasing delays Temporary network issues Circuit Breaker Stop operations when failure rate exceeds threshold Downstream service issues Fallback Values Use safe default values when operations fail Non-critical data fetching Compensating Actions Reverse previous steps on failure Multi-step transactions",
+    "snippet": "Patterns/Error Handling Error Handling Patterns Learn about our standardized approach to handling errors across the application. Error Types Error Typ…",
+    "sourcePath": "./src/stories/patterns/error-handling.mdx",
+    "metaTitle": "Patterns/Error Handling",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/patterns/form-validation",
+    "title": "form-validation",
+    "content": "Patterns/Form Validation Form Validation Patterns Best practices for implementing form validation across our applications. Validation Timing Use Case Example On Blur Simple text inputs Email format validation On Input Password strength Character count requirements On Submit Complex business rules Credit card validation Real-time Username availability Async database check Error Message Guidelines",
+    "snippet": "Patterns/Form Validation Form Validation Patterns Best practices for implementing form validation across our applications. Validation Timing Use Case …",
+    "sourcePath": "./src/stories/patterns/form-validation.mdx",
+    "metaTitle": "Patterns/Form Validation",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/patterns/navigation",
+    "title": "navigation",
+    "content": "Patterns/Navigation Navigation Patterns Guidelines for creating intuitive navigation experiences. Navigation Types Type Usage Example Top Nav Primary navigation Main menu items Side Nav Section navigation Dashboard sidebar Breadcrumbs Hierarchical navigation Current page path Tab Nav Content switching Profile sections Footer Nav Secondary navigation Legal links Best Practices",
+    "snippet": "Patterns/Navigation Navigation Patterns Guidelines for creating intuitive navigation experiences. Navigation Types Type Usage Example Top Nav Primary …",
+    "sourcePath": "./src/stories/patterns/navigation.mdx",
+    "metaTitle": "Patterns/Navigation",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/guides/accessibility",
+    "title": "accessibility",
+    "content": "Guides/Accessibility Accessibility Guidelines Learn how to make our applications accessible to all users. ARIA Landmarks ARIA Role Usage Example banner Primary header of the page <header role='banner'> navigation Navigation sections <nav role='navigation'> main Main content area <main role='main'> complementary Supporting content <aside role='complementary'> Keyboard Navigation Color and Contrast Requirement Contrast Ratio Example Use Normal Text 4.5:1 minimum Body text, labels Large Text 3:1 minimum Headings, large buttons UI Components Input borders, icons",
+    "snippet": "Guides/Accessibility Accessibility Guidelines Learn how to make our applications accessible to all users. ARIA Landmarks ARIA Role Usage Example banne…",
+    "sourcePath": "./src/stories/guides/accessibility.mdx",
+    "metaTitle": "Guides/Accessibility",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/guides/data-fetching",
+    "title": "data-fetching",
+    "content": "Guides/Data Fetching Data Fetching Patterns Learn about our recommended approaches for fetching and managing data in React applications. Fetching Approaches Common Data Fetching Patterns Caching Strategies Strategy Description Use Case Stale While Revalidate Show cached data while fetching fresh data Frequently updated data Cache First Always use cached data if available Static data Network First Always fetch fresh data Critical real-time data Error Handling Loading States Loading State Patterns",
+    "snippet": "Guides/Data Fetching Data Fetching Patterns Learn about our recommended approaches for fetching and managing data in React applications. Fetching Appr…",
+    "sourcePath": "./src/stories/guides/data-fetching.mdx",
+    "metaTitle": "Guides/Data Fetching",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/guides/getting-started",
+    "title": "getting-started",
+    "content": "Guides/Getting Started Getting Started Guide Welcome to our design system! This guide will help you get up and running quickly. Installation Basic Setup Import the necessary styles Configure your theme Wrap your application First Component Here's a simple example using our Button component: Next Steps Explore our component library Read our theming guide Check out our best practices",
+    "snippet": "Guides/Getting Started Getting Started Guide Welcome to our design system! This guide will help you get up and running quickly. Installation Basic Set…",
+    "sourcePath": "./src/stories/guides/getting-started.mdx",
+    "metaTitle": "Guides/Getting Started",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/guides/performance",
+    "title": "performance",
+    "content": "Guides/Performance Performance Guidelines Best practices for building high-performance applications. Performance Metrics Metric Target User Impact First Contentful Paint < 1.8s Initial page load perception Time to Interactive < 3.9s When users can interact Total Blocking Time < 300ms Input responsiveness Cumulative Layout Shift < 0.1 Visual stability Optimization Techniques",
+    "snippet": "Guides/Performance Performance Guidelines Best practices for building high-performance applications. Performance Metrics Metric Target User Impact Fir…",
+    "sourcePath": "./src/stories/guides/performance.mdx",
+    "metaTitle": "Guides/Performance",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/guides/state-management",
+    "title": "state-management",
+    "content": "Guides/State Management State Management Guide Learn about our approach to managing application state effectively. State Categories Category Description Example UI State Temporary visual states Modal visibility, loading states Form State User input data Form values, validation errors Server State Data from API User profile, settings URL State Route parameters Search filters, pagination State Management Patterns State Updates Pattern When to Use Immutable Updates setItems([...items, newItem]) Adding/removing items Functional Updates setCount(c => c + 1) Updates based on previous state Batch Updates useReducer(reducer, initial) Multiple related state changes Optimistic Updates Update UI before API call Improving perceived performance",
+    "snippet": "Guides/State Management State Management Guide Learn about our approach to managing application state effectively. State Categories Category Descripti…",
+    "sourcePath": "./src/stories/guides/state-management.mdx",
+    "metaTitle": "Guides/State Management",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/guides/testing-strategies",
+    "title": "testing-strategies",
+    "content": "Guides/Testing Strategies Testing Strategies Learn about our comprehensive approach to testing React applications. Testing Pyramid Testing Pyramid Structure Test Types Comparison Different Testing Approaches Testing Best Practices Test Coverage Goals Test Type Target Coverage What to Test Unit Tests 80-90% Core business logic, utilities, hooks Integration Tests 70-80% Component interactions, form flows E2E Tests 40-50% Critical user journeys",
+    "snippet": "Guides/Testing Strategies Testing Strategies Learn about our comprehensive approach to testing React applications. Testing Pyramid Testing Pyramid Str…",
+    "sourcePath": "./src/stories/guides/testing-strategies.mdx",
+    "metaTitle": "Guides/Testing Strategies",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/api-documentation/routes/authentication",
+    "title": "authentication",
+    "content": "API-Documentation/Routes/Authentication Authentication API Our authentication API uses JWT tokens for secure access management. This documentation covers all authentication-related endpoints and best practices. Authentication Flow Step Description Endpoint 1. Login Authenticate user credentials POST /auth/login 2. Token Usage Use access token in Authorization header Bearer {token} 3. Token Refresh Get new access token using refresh token POST /auth/refresh 4. Logout Invalidate current tokens POST /auth/logout Login Endpoint POST /api/v1/auth/login Authenticate a user and receive an access token email string User's email address password User's password remember boolean Extended session duration 200 Successfully authenticated accessToken eyJhbGciOiJIUzI1NiIs... refreshToken expiresIn 3600 user id 123 user@example.com name John Doe roles 401 Invalid credentials error Invalid email or password code AUTH_INVALID_CREDENTIALS 429 Too many attempts Too many login attempts AUTH_RATE_LIMIT nextAttemptAllowed 2024-01-20T15:30:00Z Refresh Token Endpoint /api/v1/auth/refresh Get a new access token using a refresh token Valid refresh token New access token generated Invalid refresh token AUTH_INVALID_REFRESH_TOKEN Logout Endpoint /api/v1/auth/logout Invalidate current session tokens Current refresh token to invalidate Successfully logged out message Security Best Practices Rate Limiting Rate Limit Time Window /auth/login 5 attempts 15 minutes /auth/refresh 20 attempts 1 hour /auth/logout 10 attempts 1 minute Token Management Token Type Expiry Usage Storage Location Access Token API request authentication Memory only Refresh Token 7 days Obtain new access tokens HTTP-only cookie Reset Token Password reset flow One-time use URL",
+    "snippet": "API-Documentation/Routes/Authentication Authentication API Our authentication API uses JWT tokens for secure access management. This documentation cov…",
+    "sourcePath": "./src/stories/api-documentation/routes/authentication.mdx",
+    "metaTitle": "API-Documentation/Routes/Authentication",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/api-documentation/routes/orders",
+    "title": "orders",
+    "content": "API-Documentation/Routes/Orders Orders API The Orders API manages e-commerce order processing and tracking. This documentation covers all order-related endpoints and best practices. Overview Operation Endpoint Description List Orders GET /api/orders Retrieve a paginated list of orders Get Order GET /api/orders/:id Retrieve a specific order by ID Update Order PUT /api/orders/:id Update an order's status or details Delete Order DELETE /api/orders/:id Cancel and remove an order GET /api/orders page number Page number (default: 1) limit Items per page (default: 20, max: 100) status string Filter by order status (pending, processing, shipped, delivered, cancelled) userId Filter by customer ID fromDate Filter orders from date (ISO 8601) toDate Filter orders to date (ISO 8601) sort Sort field (e.g., 'createdAt', 'total', 'status') order Sort order ('asc' or 'desc') 200 Successfully retrieved orders data id order_123 user_456 processing items total 59.98 shippingAddress createdAt 2024-01-20T12:00:00Z updatedAt 2024-01-20T12:30:00Z pagination 1 20 45 pages 3 400 Invalid date range error code INVALID_DATE_RANGE details Must be before toDate /api/orders/:id Order's unique identifier Successfully retrieved order productId prod_789 name Premium Widget quantity 2 price 29.99 subtotal tax 5.99 shipping 4.99 70.96 street 123 Main St city Springfield state IL zip 62701 billingAddress paymentStatus paid paymentMethod credit_card trackingNumber 1Z999AA1234567890 404 Order not found ORDER_NOT_FOUND PUT New order status Shipping tracking number object Updated shipping address Successfully updated order shipped 2024-01-20T16:00:00Z Invalid status transition INVALID_STATUS_TRANSITION currentStatus delivered requestedStatus DELETE Successfully cancelled order message Order successfully cancelled 409 Order cannot be cancelled Cannot cancel shipped order ORDER_CANCELLATION_FORBIDDEN Best Practices Rate Limiting Rate Limit Time Window GET /orders 300 requests 1 minute GET /orders/:id 500 requests PUT /orders/:id 100 requests DELETE /orders/:id 50 requests",
+    "snippet": "API-Documentation/Routes/Orders Orders API The Orders API manages e-commerce order processing and tracking. This documentation covers all order-relate…",
+    "sourcePath": "./src/stories/api-documentation/routes/orders.mdx",
+    "metaTitle": "API-Documentation/Routes/Orders",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/api-documentation/routes/payments",
+    "title": "payments",
+    "content": "API-Documentation/Routes/Payments Payments API The Payments API handles all payment processing and transaction management. This documentation covers all payment-related endpoints and best practices for secure payment handling. Overview Operation Endpoint Description List Payments GET /api/payments Retrieve a paginated list of payments Get Payment GET /api/payments/:id Retrieve a specific payment by ID Update Payment PUT /api/payments/:id Update payment status or details Delete Payment DELETE /api/payments/:id Void or refund a payment GET /api/payments page number Page number (default: 1) limit Items per page (default: 20, max: 100) status string Filter by payment status (pending, completed, failed, refunded) orderId Filter by associated order ID method Filter by payment method (credit_card, paypal, bank_transfer) fromDate Filter payments from date (ISO 8601) toDate Filter payments to date (ISO 8601) 200 Successfully retrieved payments data id pay_123 order_456 amount 70.96 currency USD completed credit_card paymentDetails createdAt 2024-01-20T12:00:00Z completedAt 2024-01-20T12:01:00Z pagination 1 20 total 45 pages 3 403 Insufficient permissions error Insufficient permissions to view payments code PAYMENT_ACCESS_DENIED /api/payments/:id Payment's unique identifier Successfully retrieved payment last4 4242 brand visa expiryMonth 12 expiryYear 2025 billingAddress street 123 Main St city Springfield state IL zip 62701 country US metadata customerReference cust_789 invoiceNumber INV-2024-001 refundable 404 Payment not found PAYMENT_NOT_FOUND PUT New payment status object Additional payment metadata Successfully updated payment refunded refundedAt 2024-01-20T16:00:00Z refundReason Customer request refundReference ref_abc 400 Invalid status transition Invalid payment status transition INVALID_PAYMENT_STATUS details currentStatus requestedStatus pending Delete Payment (Void/Refund) DELETE reason Reason for voiding/refunding the payment Successfully voided/refunded payment message Payment successfully refunded refundId ref_456 409 Payment cannot be refunded Payment already refunded PAYMENT_ALREADY_REFUNDED Best Practices Rate Limiting Rate Limit Time Window GET /payments 100 requests 1 minute GET /payments/:id 300 requests PUT /payments/:id 50 requests DELETE /payments/:id 20 requests Security Considerations Security Aspect Requirement PCI Compliance Required for credit card processing Ensure all payment processing follows PCI DSS guidelines Data Encryption TLS 1.2 or higher All payment data must be encrypted in transit Authentication Strong authentication required Multi-factor authentication for payment operations Audit Logging Comprehensive logging Log all payment operations for audit purposes",
+    "snippet": "API-Documentation/Routes/Payments Payments API The Payments API handles all payment processing and transaction management. This documentation covers a…",
+    "sourcePath": "./src/stories/api-documentation/routes/payments.mdx",
+    "metaTitle": "API-Documentation/Routes/Payments",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/api-documentation/routes/products",
+    "title": "products",
+    "content": "API-Documentation/Routes/Products Products API The Products API enables management of product resources in our e-commerce system. This documentation covers all product-related endpoints and best practices. Overview Operation Endpoint Description List Products GET /api/products Retrieve a paginated list of products Get Product GET /api/products/:id Retrieve a specific product by ID Update Product PUT /api/products/:id Update a product's information Delete Product DELETE /api/products/:id Remove a product from the system GET /api/products page number Page number (default: 1) limit Items per page (default: 20, max: 100) category string Filter by product category minPrice Minimum price filter maxPrice Maximum price filter sort Sort field (e.g., 'price', 'name', 'createdAt') order Sort order ('asc' or 'desc') 200 Successfully retrieved products data id 123 name Premium Widget description High-quality widget for all your needs price 29.99 widgets stock 100 images createdAt 2024-01-20T12:00:00Z pagination 1 20 total 45 pages 3 400 Invalid query parameters error Invalid price range code INVALID_PRICE_RANGE details Must be less than maxPrice /api/products/:id Product's unique identifier Successfully retrieved product specifications weight 2.5kg dimensions 10x15x20cm color blue updatedAt 2024-01-20T14:30:00Z 404 Product not found PRODUCT_NOT_FOUND PUT Product name Product description Product price Product category Available stock string[] Array of image URLs object Product specifications Successfully updated product Updated Widget 34.99 2024-01-20T16:00:00Z Invalid input Invalid price VALIDATION_ERROR field Price must be greater than 0 DELETE Successfully deleted product message Product successfully deleted 409 Product in use Cannot delete product with active orders PRODUCT_IN_USE Best Practices Rate Limiting Rate Limit Time Window GET /products 1000 requests 1 minute GET /products/:id 2000 requests PUT /products/:id 100 requests DELETE /products/:id 50 requests",
+    "snippet": "API-Documentation/Routes/Products Products API The Products API enables management of product resources in our e-commerce system. This documentation c…",
+    "sourcePath": "./src/stories/api-documentation/routes/products.mdx",
+    "metaTitle": "API-Documentation/Routes/Products",
+    "type": "mdx"
+  },
+  {
+    "id": "src/stories/api-documentation/routes/users",
+    "title": "users",
+    "content": "API-Documentation/Routes/Users User Management API Our User Management API provides endpoints for creating, reading, updating, and deleting user resources. This documentation covers all user-related endpoints and best practices. Overview Operation Endpoint Description List Users GET /api/users Retrieve a paginated list of users Get User GET /api/users/:id Retrieve a specific user by ID Update User PUT /api/users/:id Update a user's information Delete User DELETE /api/users/:id Remove a user from the system GET /api/users page number Page number (default: 1) limit Items per page (default: 20, max: 100) sort string Sort field (e.g., 'createdAt', 'email') order Sort order ('asc' or 'desc') 200 Successfully retrieved users data id 123 email john@example.com name John Doe role user createdAt 2024-01-20T12:00:00Z pagination 1 20 total 45 pages 3 401 Unauthorized access error Authentication required code AUTH_REQUIRED 403 Insufficient permissions Insufficient permissions to list users FORBIDDEN /api/users/:id User's unique identifier Successfully retrieved user lastLogin 2024-01-20T15:30:00Z preferences theme dark notifications 404 User not found USER_NOT_FOUND PUT User's full name User's email address object User preferences object Successfully updated user john.updated@example.com John Updated Doe updatedAt 2024-01-20T16:00:00Z 400 Invalid input Invalid email format VALIDATION_ERROR field DELETE Successfully deleted user message User successfully deleted Cannot delete own account Cannot delete your own account SELF_DELETE_FORBIDDEN Best Practices Rate Limiting Rate Limit Time Window GET /users 100 requests 1 minute GET /users/:id 300 requests PUT /users/:id 50 requests DELETE /users/:id 10 requests",
+    "snippet": "API-Documentation/Routes/Users User Management API Our User Management API provides endpoints for creating, reading, updating, and deleting user resou…",
+    "sourcePath": "./src/stories/api-documentation/routes/users.mdx",
+    "metaTitle": "API-Documentation/Routes/Users",
+    "type": "mdx"
+  }
+]

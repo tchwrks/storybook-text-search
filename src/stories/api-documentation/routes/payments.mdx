@@ -1,0 +1,358 @@
+import { Meta } from '@storybook/blocks';
+import { APIEndpoint } from '../../doc-blocks/APIEndpoint';
+import { Table } from '../../doc-blocks/Table';
+import { DosDonts } from '../../doc-blocks/DosDonts';
+
+<Meta title="API-Documentation/Routes/Payments" />
+
+# Payments API
+
+The Payments API handles all payment processing and transaction management. This documentation covers all payment-related endpoints and best practices for secure payment handling.
+
+## Overview
+
+<Table 
+    columns={[
+        { key: "operation", header: "Operation" },
+        { key: "endpoint", header: "Endpoint" },
+        { key: "description", header: "Description" }
+    ]}
+    data={[
+        { operation: "List Payments", endpoint: "GET /api/payments", description: "Retrieve a paginated list of payments" },
+        { operation: "Get Payment", endpoint: "GET /api/payments/:id", description: "Retrieve a specific payment by ID" },
+        { operation: "Update Payment", endpoint: "PUT /api/payments/:id", description: "Update payment status or details" },
+        { operation: "Delete Payment", endpoint: "DELETE /api/payments/:id", description: "Void or refund a payment" }
+    ]}
+/>
+
+## List Payments
+
+<APIEndpoint
+    method="GET"
+    path="/api/payments"
+    description="Retrieve a paginated list of payments"
+    parameters={[
+        {
+            name: "page",
+            type: "number",
+            required: false,
+            description: "Page number (default: 1)"
+        },
+        {
+            name: "limit",
+            type: "number",
+            required: false,
+            description: "Items per page (default: 20, max: 100)"
+        },
+        {
+            name: "status",
+            type: "string",
+            required: false,
+            description: "Filter by payment status (pending, completed, failed, refunded)"
+        },
+        {
+            name: "orderId",
+            type: "string",
+            required: false,
+            description: "Filter by associated order ID"
+        },
+        {
+            name: "method",
+            type: "string",
+            required: false,
+            description: "Filter by payment method (credit_card, paypal, bank_transfer)"
+        },
+        {
+            name: "fromDate",
+            type: "string",
+            required: false,
+            description: "Filter payments from date (ISO 8601)"
+        },
+        {
+            name: "toDate",
+            type: "string",
+            required: false,
+            description: "Filter payments to date (ISO 8601)"
+        }
+    ]}
+    responses={[
+        {
+            status: 200,
+            description: "Successfully retrieved payments",
+            example: `{
+  "data": [
+    {
+      "id": "pay_123",
+      "orderId": "order_456",
+      "amount": 70.96,
+      "currency": "USD",
+      "status": "completed",
+      "method": "credit_card",
+      "paymentDetails": {
+        "last4": "4242",
+        "brand": "visa",
+        "expiryMonth": 12,
+        "expiryYear": 2025
+      },
+      "createdAt": "2024-01-20T12:00:00Z",
+      "completedAt": "2024-01-20T12:01:00Z"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "limit": 20,
+    "total": 45,
+    "pages": 3
+  }
+}`
+        },
+        {
+            status: 403,
+            description: "Insufficient permissions",
+            example: `{
+  "error": "Insufficient permissions to view payments",
+  "code": "PAYMENT_ACCESS_DENIED"
+}`
+        }
+    ]}
+/>
+
+## Get Payment
+
+<APIEndpoint
+    method="GET"
+    path="/api/payments/:id"
+    description="Retrieve a specific payment by ID"
+    parameters={[
+        {
+            name: "id",
+            type: "string",
+            required: true,
+            description: "Payment's unique identifier"
+        }
+    ]}
+    responses={[
+        {
+            status: 200,
+            description: "Successfully retrieved payment",
+            example: `{
+  "id": "pay_123",
+  "orderId": "order_456",
+  "amount": 70.96,
+  "currency": "USD",
+  "status": "completed",
+  "method": "credit_card",
+  "paymentDetails": {
+    "last4": "4242",
+    "brand": "visa",
+    "expiryMonth": 12,
+    "expiryYear": 2025
+  },
+  "billingAddress": {
+    "street": "123 Main St",
+    "city": "Springfield",
+    "state": "IL",
+    "zip": "62701",
+    "country": "US"
+  },
+  "metadata": {
+    "customerReference": "cust_789",
+    "invoiceNumber": "INV-2024-001"
+  },
+  "refundable": true,
+  "createdAt": "2024-01-20T12:00:00Z",
+  "completedAt": "2024-01-20T12:01:00Z"
+}`
+        },
+        {
+            status: 404,
+            description: "Payment not found",
+            example: `{
+  "error": "Payment not found",
+  "code": "PAYMENT_NOT_FOUND"
+}`
+        }
+    ]}
+/>
+
+## Update Payment
+
+<APIEndpoint
+    method="PUT"
+    path="/api/payments/:id"
+    description="Update payment status or details"
+    parameters={[
+        {
+            name: "id",
+            type: "string",
+            required: true,
+            description: "Payment's unique identifier"
+        },
+        {
+            name: "status",
+            type: "string",
+            required: false,
+            description: "New payment status"
+        },
+        {
+            name: "metadata",
+            type: "object",
+            required: false,
+            description: "Additional payment metadata"
+        }
+    ]}
+    responses={[
+        {
+            status: 200,
+            description: "Successfully updated payment",
+            example: `{
+  "id": "pay_123",
+  "status": "refunded",
+  "refundedAt": "2024-01-20T16:00:00Z",
+  "metadata": {
+    "refundReason": "Customer request",
+    "refundReference": "ref_abc"
+  }
+}`
+        },
+        {
+            status: 400,
+            description: "Invalid status transition",
+            example: `{
+  "error": "Invalid payment status transition",
+  "code": "INVALID_PAYMENT_STATUS",
+  "details": {
+    "currentStatus": "refunded",
+    "requestedStatus": "pending"
+  }
+}`
+        }
+    ]}
+/>
+
+## Delete Payment (Void/Refund)
+
+<APIEndpoint
+    method="DELETE"
+    path="/api/payments/:id"
+    description="Void or refund a payment"
+    parameters={[
+        {
+            name: "id",
+            type: "string",
+            required: true,
+            description: "Payment's unique identifier"
+        },
+        {
+            name: "reason",
+            type: "string",
+            required: true,
+            description: "Reason for voiding/refunding the payment"
+        }
+    ]}
+    responses={[
+        {
+            status: 200,
+            description: "Successfully voided/refunded payment",
+            example: `{
+  "message": "Payment successfully refunded",
+  "id": "pay_123",
+  "refundId": "ref_456",
+  "amount": 70.96,
+  "currency": "USD"
+}`
+        },
+        {
+            status: 409,
+            description: "Payment cannot be refunded",
+            example: `{
+  "error": "Payment already refunded",
+  "code": "PAYMENT_ALREADY_REFUNDED"
+}`
+        }
+    ]}
+/>
+
+## Best Practices
+
+<DosDonts 
+    dos={[
+        {
+            title: "Secure Data Handling",
+            description: "Never log or store sensitive payment data",
+            code: `// Only store last 4 digits
+const maskedCard = {
+  last4: card.number.slice(-4),
+  brand: card.brand
+};`
+        },
+        {
+            title: "Idempotency",
+            description: "Use idempotency keys for payment operations",
+            code: `await processPayment({
+  idempotencyKey: orderId + timestamp,
+  amount: total
+});`
+        }
+    ]}
+    donts={[
+        {
+            title: "Sensitive Data",
+            description: "Don't expose full payment details",
+            code: "// Never log or return full card numbers"
+        },
+        {
+            title: "Direct Updates",
+            description: "Don't modify payment status directly",
+            code: "// Always use payment provider's SDK"
+        }
+    ]}
+/>
+
+## Rate Limiting
+
+<Table 
+    columns={[
+        { key: "endpoint", header: "Endpoint" },
+        { key: "limit", header: "Rate Limit" },
+        { key: "window", header: "Time Window" }
+    ]}
+    data={[
+        { endpoint: "GET /payments", limit: "100 requests", window: "1 minute" },
+        { endpoint: "GET /payments/:id", limit: "300 requests", window: "1 minute" },
+        { endpoint: "PUT /payments/:id", limit: "50 requests", window: "1 minute" },
+        { endpoint: "DELETE /payments/:id", limit: "20 requests", window: "1 minute" }
+    ]}
+/>
+
+## Security Considerations
+
+<Table 
+    columns={[
+        { key: "aspect", header: "Security Aspect" },
+        { key: "requirement", header: "Requirement" },
+        { key: "description", header: "Description" }
+    ]}
+    data={[
+        { 
+            aspect: "PCI Compliance", 
+            requirement: "Required for credit card processing",
+            description: "Ensure all payment processing follows PCI DSS guidelines"
+        },
+        { 
+            aspect: "Data Encryption", 
+            requirement: "TLS 1.2 or higher",
+            description: "All payment data must be encrypted in transit"
+        },
+        { 
+            aspect: "Authentication", 
+            requirement: "Strong authentication required",
+            description: "Multi-factor authentication for payment operations"
+        },
+        { 
+            aspect: "Audit Logging", 
+            requirement: "Comprehensive logging",
+            description: "Log all payment operations for audit purposes"
+        }
+    ]}
+/> 

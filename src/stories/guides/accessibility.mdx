@@ -1,0 +1,115 @@
+import { Meta } from '@storybook/blocks';
+import { Table } from '../doc-blocks/Table';
+import { DosDonts } from '../doc-blocks/DosDonts';
+
+<Meta title="Guides/Accessibility" />
+
+# Accessibility Guidelines
+
+Learn how to make our applications accessible to all users.
+
+## ARIA Landmarks
+
+<Table 
+    columns={[
+        { key: "role", header: "ARIA Role" },
+        { key: "usage", header: "Usage" },
+        { key: "example", header: "Example" }
+    ]}
+    data={[
+        { 
+            role: "banner", 
+            usage: "Primary header of the page", 
+            example: "<header role='banner'>" 
+        },
+        { 
+            role: "navigation", 
+            usage: "Navigation sections", 
+            example: "<nav role='navigation'>" 
+        },
+        { 
+            role: "main", 
+            usage: "Main content area", 
+            example: "<main role='main'>" 
+        },
+        { 
+            role: "complementary", 
+            usage: "Supporting content", 
+            example: "<aside role='complementary'>" 
+        }
+    ]}
+/>
+
+## Keyboard Navigation
+
+<DosDonts 
+    dos={[
+        {
+            title: "Focus Management",
+            description: "Ensure all interactive elements are focusable",
+            code: `<button
+  onClick={handleClick}
+  onKeyDown={handleKeyDown}
+  tabIndex={0}
+>
+  Click Me
+</button>`
+        },
+        {
+            title: "Focus Trapping",
+            description: "Trap focus in modals and dialogs",
+            code: `function Modal() {
+  useFocusTrap(modalRef);
+  return (
+    <div ref={modalRef} role="dialog">
+      {/* Modal content */}
+    </div>
+  );
+}`
+        }
+    ]}
+    donts={[
+        {
+            title: "Mouse-Only Events",
+            description: "Don't rely solely on mouse events",
+            code: `<div onMouseOver={showTooltip}>  // Bad
+  Hover me
+</div>`
+        },
+        {
+            title: "Keyboard Traps",
+            description: "Don't trap keyboard focus unnecessarily",
+            code: `// Don't prevent Tab navigation
+element.addEventListener('keydown', (e) => {
+  e.preventDefault();  // Bad
+});`
+        }
+    ]}
+/>
+
+## Color and Contrast
+
+<Table 
+    columns={[
+        { key: "requirement", header: "Requirement" },
+        { key: "ratio", header: "Contrast Ratio" },
+        { key: "example", header: "Example Use" }
+    ]}
+    data={[
+        { 
+            requirement: "Normal Text", 
+            ratio: "4.5:1 minimum", 
+            example: "Body text, labels" 
+        },
+        { 
+            requirement: "Large Text", 
+            ratio: "3:1 minimum", 
+            example: "Headings, large buttons" 
+        },
+        { 
+            requirement: "UI Components", 
+            ratio: "3:1 minimum", 
+            example: "Input borders, icons" 
+        }
+    ]}
+/> 

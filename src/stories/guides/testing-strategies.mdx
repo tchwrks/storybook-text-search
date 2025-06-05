@@ -1,0 +1,152 @@
+import { Meta } from '@storybook/blocks';
+import { Table } from '../doc-blocks/Table';
+import { DosDonts } from '../doc-blocks/DosDonts';
+import { FlowDiagram } from '../doc-blocks/FlowDiagram';
+import { CodeComparison } from '../doc-blocks/CodeComparison';
+
+<Meta title="Guides/Testing Strategies" />
+
+# Testing Strategies
+
+Learn about our comprehensive approach to testing React applications.
+
+## Testing Pyramid
+
+<FlowDiagram
+    title="Testing Pyramid Structure"
+    description="Our recommended approach to structuring tests, from most numerous to least"
+    steps={[
+        {
+            id: "unit",
+            title: "Unit Tests",
+            description: "Test individual functions and components in isolation",
+            code: `test('calculateTotal adds tax correctly', () => {
+  expect(calculateTotal(100)).toBe(107);
+});`
+        },
+        {
+            id: "integration",
+            title: "Integration Tests",
+            description: "Test how components and functions work together",
+            code: `test('form submission updates user profile', async () => {
+  render(<ProfileForm />);
+  await userEvent.type(screen.getByLabelText('name'), 'John');
+  await userEvent.click(screen.getByText('Save'));
+  expect(screen.getByText('Profile updated')).toBeVisible();
+});`
+        },
+        {
+            id: "e2e",
+            title: "End-to-End Tests",
+            description: "Test complete user flows in a real browser environment",
+            code: `test('user can complete checkout flow', async () => {
+  await page.goto('/products');
+  await page.click('[data-testid="add-to-cart"]');
+  await page.click('[data-testid="checkout"]');
+  await expect(page).toHaveURL('/confirmation');
+});`
+        }
+    ]}
+/>
+
+## Test Types Comparison
+
+<CodeComparison
+    title="Different Testing Approaches"
+    description="Compare different testing methods and their use cases"
+    examples={[
+        {
+            language: "Unit Test",
+            code: `describe('useAuth', () => {
+  it('handles login success', () => {
+    const { result } = renderHook(() => useAuth());
+    act(() => {
+      result.current.login('user', 'pass');
+    });
+    expect(result.current.isAuthenticated).toBe(true);
+  });
+});`,
+            description: "Fast, focused tests for individual pieces of logic"
+        },
+        {
+            language: "Component Test",
+            code: `test('Button handles click events', () => {
+  const handleClick = jest.fn();
+  render(<Button onClick={handleClick}>
+    Click me
+  </Button>);
+  
+  userEvent.click(screen.getByText('Click me'));
+  expect(handleClick).toHaveBeenCalled();
+});`,
+            description: "Test component behavior and rendering"
+        }
+    ]}
+/>
+
+## Testing Best Practices
+
+<DosDonts 
+    dos={[
+        {
+            title: "Test Behavior, Not Implementation",
+            description: "Focus on what the code does, not how it does it",
+            code: `// Good: Test behavior
+test('shows error on invalid input', () => {
+  render(<Form />);
+  userEvent.type(input, 'invalid');
+  expect(screen.getByRole('alert')).toBeVisible();
+});`
+        },
+        {
+            title: "Use Testing Library Queries",
+            description: "Use semantic queries that reflect how users interact",
+            code: `// Good: Semantic queries
+const submitButton = screen.getByRole('button', {
+  name: /submit/i
+});`
+        }
+    ]}
+    donts={[
+        {
+            title: "Avoid Implementation Details",
+            description: "Don't test internal state or methods directly",
+            code: `// Bad: Testing implementation
+expect(component.state.isLoading).toBe(true);
+expect(component.handleSubmit).toHaveBeenCalled();`
+        },
+        {
+            title: "Avoid Snapshot Tests",
+            description: "Don't rely heavily on snapshot tests",
+            code: `// Bad: Brittle snapshot tests
+expect(container).toMatchSnapshot();`
+        }
+    ]}
+/>
+
+## Test Coverage Goals
+
+<Table 
+    columns={[
+        { key: "type", header: "Test Type" },
+        { key: "coverage", header: "Target Coverage" },
+        { key: "focus", header: "What to Test" }
+    ]}
+    data={[
+        { 
+            type: "Unit Tests", 
+            coverage: "80-90%", 
+            focus: "Core business logic, utilities, hooks" 
+        },
+        { 
+            type: "Integration Tests", 
+            coverage: "70-80%", 
+            focus: "Component interactions, form flows" 
+        },
+        { 
+            type: "E2E Tests", 
+            coverage: "40-50%", 
+            focus: "Critical user journeys" 
+        }
+    ]}
+/> 

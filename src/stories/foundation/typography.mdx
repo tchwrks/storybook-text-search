@@ -1,0 +1,81 @@
+import { Meta } from '@storybook/blocks';
+import { TypeScale } from '../doc-blocks/TypeScale';
+import { Table } from '../doc-blocks/Table';
+
+<Meta title="Foundation/Typography" />
+
+# Typography System
+
+Our typography system is designed to create clear hierarchies and maintain readability across all screen sizes.
+
+## Type Scale
+
+<TypeScale
+    tokens={[
+        { 
+            name: "Display",
+            size: "48px",
+            weight: "700",
+            lineHeight: "1.1",
+            sampleText: "Display Heading"
+        },
+        { 
+            name: "Heading 1",
+            size: "36px",
+            weight: "700",
+            lineHeight: "1.2",
+            sampleText: "Page Heading"
+        },
+        { 
+            name: "Heading 2",
+            size: "30px",
+            weight: "600",
+            lineHeight: "1.3",
+            sampleText: "Section Heading"
+        },
+        { 
+            name: "Heading 3",
+            size: "24px",
+            weight: "600",
+            lineHeight: "1.4",
+            sampleText: "Subsection Heading"
+        },
+        { 
+            name: "Body Large",
+            size: "18px",
+            weight: "400",
+            lineHeight: "1.6",
+            sampleText: "Large body text for improved readability in key areas."
+        },
+        { 
+            name: "Body",
+            size: "16px",
+            weight: "400",
+            lineHeight: "1.5",
+            sampleText: "Default body text used for most content and descriptions."
+        },
+        { 
+            name: "Small",
+            size: "14px",
+            weight: "400",
+            lineHeight: "1.5",
+            sampleText: "Small text used for captions and supporting information."
+        }
+    ]}
+/>
+
+## Font Weights
+
+<Table 
+    columns={[
+        { key: "weight", header: "Weight" },
+        { key: "name", header: "Name" },
+        { key: "usage", header: "Usage" }
+    ]}
+    data={[
+        { weight: "400", name: "Regular", usage: "Body text, paragraphs, and most content" },
+        { weight: "500", name: "Medium", usage: "Emphasis within paragraphs, button text" },
+        { weight: "600", name: "Semibold", usage: "Subheadings, strong emphasis" },
+        { weight: "700", name: "Bold", usage: "Main headings, maximum emphasis" }
+    ]}
+/>

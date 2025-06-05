@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/blocks';
+import { DosDonts } from '../doc-blocks/DosDonts';
+import { Table } from '../doc-blocks/Table';
+
+<Meta title="Patterns/Navigation" />
+
+# Navigation Patterns
+
+Guidelines for creating intuitive navigation experiences.
+
+## Navigation Types
+
+<Table 
+    columns={[
+        { key: "type", header: "Type" },
+        { key: "usage", header: "Usage" },
+        { key: "example", header: "Example" }
+    ]}
+    data={[
+        { type: "Top Nav", usage: "Primary navigation", example: "Main menu items" },
+        { type: "Side Nav", usage: "Section navigation", example: "Dashboard sidebar" },
+        { type: "Breadcrumbs", usage: "Hierarchical navigation", example: "Current page path" },
+        { type: "Tab Nav", usage: "Content switching", example: "Profile sections" },
+        { type: "Footer Nav", usage: "Secondary navigation", example: "Legal links" }
+    ]}
+/>
+
+## Best Practices
+
+<DosDonts 
+    dos={[
+        {
+            title: "Clear Hierarchy",
+            description: "Use visual hierarchy to show navigation levels",
+            code: "Primary > Secondary > Tertiary nav"
+        },
+        {
+            title: "Current State",
+            description: "Always indicate current location",
+            code: "Highlight active nav item"
+        }
+    ]}
+    donts={[
+        {
+            title: "Deep Nesting",
+            description: "Avoid deeply nested navigation",
+            code: "More than 3 levels deep"
+        },
+        {
+            title: "Inconsistent Patterns",
+            description: "Don't mix navigation patterns",
+            code: "Different nav styles per section"
+        }
+    ]}
+/> 

@@ -1,0 +1,112 @@
+import { Meta } from '@storybook/blocks';
+import { Table } from '../doc-blocks/Table';
+import { DosDonts } from '../doc-blocks/DosDonts';
+
+<Meta title="Patterns/Error Handling" />
+
+# Error Handling Patterns
+
+Learn about our standardized approach to handling errors across the application.
+
+## Error Types
+
+<Table 
+    columns={[
+        { key: "type", header: "Error Type" },
+        { key: "usage", header: "When to Use" },
+        { key: "example", header: "Example" }
+    ]}
+    data={[
+        { 
+            type: "ValidationError", 
+            usage: "User input validation failures", 
+            example: "Invalid email format" 
+        },
+        { 
+            type: "NetworkError", 
+            usage: "API or network-related issues", 
+            example: "Failed to fetch data" 
+        },
+        { 
+            type: "AuthenticationError", 
+            usage: "Auth-related failures", 
+            example: "Token expired" 
+        },
+        { 
+            type: "BusinessLogicError", 
+            usage: "Domain-specific rules violations", 
+            example: "Insufficient funds" 
+        }
+    ]}
+/>
+
+## Error Handling Best Practices
+
+<DosDonts 
+    dos={[
+        {
+            title: "Descriptive Error Messages",
+            description: "Provide clear, actionable error messages",
+            code: `throw new ValidationError({
+  message: 'Password must be at least 8 characters long',
+  field: 'password',
+  minLength: 8
+});`
+        },
+        {
+            title: "Consistent Error Structure",
+            description: "Use standardized error objects",
+            code: `class AppError extends Error {
+  constructor(code, message, details = {}) {
+    super(message);
+    this.code = code;
+    this.details = details;
+  }
+}`
+        }
+    ]}
+    donts={[
+        {
+            title: "Generic Messages",
+            description: "Avoid vague error messages that don't help users",
+            code: `throw new Error('Something went wrong');  // Too vague`
+        },
+        {
+            title: "Exposing Internals",
+            description: "Don't expose sensitive information in errors",
+            code: `throw new Error(\`DB Query failed: \${sqlError}\`);  // Unsafe`
+        }
+    ]}
+/>
+
+## Error Recovery Patterns
+
+<Table 
+    columns={[
+        { key: "pattern", header: "Pattern" },
+        { key: "description", header: "Description" },
+        { key: "useCase", header: "Use Case" }
+    ]}
+    data={[
+        { 
+            pattern: "Retry with Backoff", 
+            description: "Automatically retry failed operations with increasing delays", 
+            useCase: "Temporary network issues" 
+        },
+        { 
+            pattern: "Circuit Breaker", 
+            description: "Stop operations when failure rate exceeds threshold", 
+            useCase: "Downstream service issues" 
+        },
+        { 
+            pattern: "Fallback Values", 
+            description: "Use safe default values when operations fail", 
+            useCase: "Non-critical data fetching" 
+        },
+        { 
+            pattern: "Compensating Actions", 
+            description: "Reverse previous steps on failure", 
+            useCase: "Multi-step transactions" 
+        }
+    ]}
+/> 

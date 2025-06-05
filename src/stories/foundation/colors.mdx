@@ -1,0 +1,44 @@
+import { Meta } from '@storybook/blocks';
+import { ColorPalette } from '../doc-blocks/ColorPalette';
+
+<Meta title="Foundation/Colors" />
+
+# Color System
+
+Our color system is built to ensure consistency, accessibility, and visual harmony across all our products.
+
+## Brand Colors
+
+<ColorPalette
+    groupName="Primary Brand Colors"
+    colors={[
+        { name: 'Primary', value: '#0066CC', description: 'Main brand color, used for primary actions and key visuals' },
+        { name: 'Secondary', value: '#4C9AFF', description: 'Supporting brand color, used for secondary elements' },
+        { name: 'Accent', value: '#00875A', description: 'Used for highlighting and special elements' }
+    ]}
+/>
+
+## Semantic Colors
+
+<ColorPalette
+    groupName="Status Colors"
+    colors={[
+        { name: 'Success', value: '#22C55E', description: 'Positive actions and success states' },
+        { name: 'Warning', value: '#F59E0B', description: 'Warnings and cautionary states' },
+        { name: 'Error', value: '#EF4444', description: 'Error states and destructive actions' },
+        { name: 'Info', value: '#3B82F6', description: 'Informational states and help content' }
+    ]}
+/>
+
+## Neutral Scale
+
+<ColorPalette
+    groupName="Grayscale"
+    colors={[
+        { name: 'Gray 900', value: '#111827', description: 'Primary text' },
+        { name: 'Gray 700', value: '#374151', description: 'Secondary text' },
+        { name: 'Gray 500', value: '#6B7280', description: 'Disabled text' },
+        { name: 'Gray 300', value: '#D1D5DB', description: 'Borders' },
+        { name: 'Gray 100', value: '#F3F4F6', description: 'Backgrounds' }
+    ]}
+/> 

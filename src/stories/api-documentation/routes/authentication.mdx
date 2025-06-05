@@ -1,0 +1,207 @@
+import { Meta } from '@storybook/blocks';
+import { APIEndpoint } from '../../doc-blocks/APIEndpoint';
+import { Table } from '../../doc-blocks/Table';
+import { DosDonts } from '../../doc-blocks/DosDonts';
+
+<Meta title="API-Documentation/Routes/Authentication" />
+
+# Authentication API
+
+Our authentication API uses JWT tokens for secure access management. This documentation covers all authentication-related endpoints and best practices.
+
+## Authentication Flow
+
+<Table 
+    columns={[
+        { key: "step", header: "Step" },
+        { key: "description", header: "Description" },
+        { key: "endpoint", header: "Endpoint" }
+    ]}
+    data={[
+        { step: "1. Login", description: "Authenticate user credentials", endpoint: "POST /auth/login" },
+        { step: "2. Token Usage", description: "Use access token in Authorization header", endpoint: "Bearer {token}" },
+        { step: "3. Token Refresh", description: "Get new access token using refresh token", endpoint: "POST /auth/refresh" },
+        { step: "4. Logout", description: "Invalidate current tokens", endpoint: "POST /auth/logout" }
+    ]}
+/>
+
+## Login Endpoint
+
+<APIEndpoint
+    method="POST"
+    path="/api/v1/auth/login"
+    description="Authenticate a user and receive an access token"
+    parameters={[
+        {
+            name: "email",
+            type: "string",
+            required: true,
+            description: "User's email address"
+        },
+        {
+            name: "password",
+            type: "string",
+            required: true,
+            description: "User's password"
+        },
+        {
+            name: "remember",
+            type: "boolean",
+            required: false,
+            description: "Extended session duration"
+        }
+    ]}
+    responses={[
+        {
+            status: 200,
+            description: "Successfully authenticated",
+            example: `{
+  "accessToken": "eyJhbGciOiJIUzI1NiIs...",
+  "refreshToken": "eyJhbGciOiJIUzI1NiIs...",
+  "expiresIn": 3600,
+  "user": {
+    "id": "123",
+    "email": "user@example.com",
+    "name": "John Doe",
+    "roles": ["user"]
+  }
+}`
+        },
+        {
+            status: 401,
+            description: "Invalid credentials",
+            example: `{
+  "error": "Invalid email or password",
+  "code": "AUTH_INVALID_CREDENTIALS"
+}`
+        },
+        {
+            status: 429,
+            description: "Too many attempts",
+            example: `{
+  "error": "Too many login attempts",
+  "code": "AUTH_RATE_LIMIT",
+  "nextAttemptAllowed": "2024-01-20T15:30:00Z"
+}`
+        }
+    ]}
+/>
+
+## Refresh Token Endpoint
+
+<APIEndpoint
+    method="POST"
+    path="/api/v1/auth/refresh"
+    description="Get a new access token using a refresh token"
+    parameters={[
+        {
+            name: "refreshToken",
+            type: "string",
+            required: true,
+            description: "Valid refresh token"
+        }
+    ]}
+    responses={[
+        {
+            status: 200,
+            description: "New access token generated",
+            example: `{
+  "accessToken": "eyJhbGciOiJIUzI1NiIs...",
+  "expiresIn": 3600
+}`
+        },
+        {
+            status: 401,
+            description: "Invalid refresh token",
+            example: `{
+  "error": "Invalid refresh token",
+  "code": "AUTH_INVALID_REFRESH_TOKEN"
+}`
+        }
+    ]}
+/>
+
+## Logout Endpoint
+
+<APIEndpoint
+    method="POST"
+    path="/api/v1/auth/logout"
+    description="Invalidate current session tokens"
+    parameters={[
+        {
+            name: "refreshToken",
+            type: "string",
+            required: false,
+            description: "Current refresh token to invalidate"
+        }
+    ]}
+    responses={[
+        {
+            status: 200,
+            description: "Successfully logged out",
+            example: `{
+  "message": "Successfully logged out"
+}`
+        }
+    ]}
+/>
+
+## Security Best Practices
+
+<DosDonts 
+    dos={[
+        {
+            title: "Secure Token Storage",
+            description: "Store tokens in secure HTTP-only cookies",
+            code: "Set-Cookie: refreshToken=xyz; HttpOnly; Secure"
+        },
+        {
+            title: "Token Validation",
+            description: "Always validate token signature and expiration",
+            code: "jwt.verify(token, SECRET_KEY)"
+        }
+    ]}
+    donts={[
+        {
+            title: "Client Storage",
+            description: "Don't store tokens in localStorage",
+            code: "localStorage.setItem('token', jwt) // Unsafe"
+        },
+        {
+            title: "Token Exposure",
+            description: "Don't include sensitive data in tokens",
+            code: "jwt.sign({ ssn: '123-45-6789' }) // Never"
+        }
+    ]}
+/>
+
+## Rate Limiting
+
+<Table 
+    columns={[
+        { key: "endpoint", header: "Endpoint" },
+        { key: "limit", header: "Rate Limit" },
+        { key: "window", header: "Time Window" }
+    ]}
+    data={[
+        { endpoint: "/auth/login", limit: "5 attempts", window: "15 minutes" },
+        { endpoint: "/auth/refresh", limit: "20 attempts", window: "1 hour" },
+        { endpoint: "/auth/logout", limit: "10 attempts", window: "1 minute" }
+    ]}
+/>
+
+## Token Management
+
+<Table 
+    columns={[
+        { key: "token", header: "Token Type" },
+        { key: "expiry", header: "Expiry" },
+        { key: "usage", header: "Usage" },
+        { key: "storage", header: "Storage Location" }
+    ]}
+    data={[
+        { token: "Access Token", expiry: "1 hour", usage: "API request authentication", storage: "Memory only" },
+        { token: "Refresh Token", expiry: "7 days", usage: "Obtain new access tokens", storage: "HTTP-only cookie" },
+        { token: "Reset Token", expiry: "1 hour", usage: "Password reset flow", storage: "One-time use URL" }
+    ]}
+/> 

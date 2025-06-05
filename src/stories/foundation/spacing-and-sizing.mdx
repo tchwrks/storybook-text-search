@@ -1,0 +1,180 @@
+import { Meta } from '@storybook/blocks';
+import { Table } from '../doc-blocks/Table';
+import { DosDonts } from '../doc-blocks/DosDonts';
+import { SpacingScale } from '../doc-blocks/SpacingScale';
+
+<Meta title="Foundation/Spacing and Sizing" />
+
+# Spacing and Sizing
+
+Learn about our systematic approach to spacing and component sizing across the application.
+
+## Spacing Scale
+
+<SpacingScale
+    tokens={[
+        { name: "2xs", value: "0.25rem", pixels: 4 },
+        { name: "xs", value: "0.5rem", pixels: 8 },
+        { name: "sm", value: "0.75rem", pixels: 12 },
+        { name: "md", value: "1rem", pixels: 16 },
+        { name: "lg", value: "1.5rem", pixels: 24 },
+        { name: "xl", value: "2rem", pixels: 32 },
+        { name: "2xl", value: "3rem", pixels: 48 },
+        { name: "3xl", value: "4rem", pixels: 64 }
+    ]}
+/>
+
+## Usage Guidelines
+
+<Table 
+    columns={[
+        { key: "scale", header: "Scale" },
+        { key: "usage", header: "Usage" },
+        { key: "example", header: "Example" }
+    ]}
+    data={[
+        { 
+            scale: "2xs (4px)", 
+            usage: "Minimal spacing, borders, thin lines", 
+            example: "Border width, icon padding" 
+        },
+        { 
+            scale: "xs (8px)", 
+            usage: "Tight spacing between related elements", 
+            example: "Button icon gap, list item spacing" 
+        },
+        { 
+            scale: "sm (12px)", 
+            usage: "Default spacing for compact layouts", 
+            example: "Form field spacing, card padding" 
+        },
+        { 
+            scale: "md (16px)", 
+            usage: "Standard component spacing", 
+            example: "Section padding, grid gap" 
+        },
+        { 
+            scale: "lg (24px)", 
+            usage: "Generous spacing between sections", 
+            example: "Section margins, large component padding" 
+        },
+        { 
+            scale: "xl (32px)", 
+            usage: "Major layout spacing", 
+            example: "Page sections, large component margins" 
+        },
+        { 
+            scale: "2xl (48px)", 
+            usage: "Significant layout divisions", 
+            example: "Hero sections, large vertical spacing" 
+        },
+        { 
+            scale: "3xl (64px)", 
+            usage: "Maximum layout spacing", 
+            example: "Page margins, major section divisions" 
+        }
+    ]}
+/>
+
+## Best Practices
+
+<DosDonts 
+    dos={[
+        {
+            title: "Use Consistent Spacing",
+            description: "Apply spacing tokens consistently across components",
+            code: `// Good: Using spacing scale
+.card {
+  padding: var(--spacing-md);
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}`
+        },
+        {
+            title: "Scale Appropriately",
+            description: "Choose spacing based on component hierarchy",
+            code: `// Good: Hierarchical spacing
+.section {
+  margin-bottom: var(--spacing-2xl);  /* Large section gap */
+}
+.section__header {
+  margin-bottom: var(--spacing-lg);  /* Medium component gap */
+}
+.section__content {
+  gap: var(--spacing-md);  /* Standard content gap */
+}`
+        }
+    ]}
+    donts={[
+        {
+            title: "Avoid Magic Numbers",
+            description: "Don't use arbitrary pixel values",
+            code: `// Bad: Arbitrary spacing
+.element {
+  margin: 23px;  /* Arbitrary value */
+  padding: 17px;  /* Not from spacing scale */
+}`
+        },
+        {
+            title: "Skip Scale Steps",
+            description: "Don't skip spacing scale steps without reason",
+            code: `// Bad: Inconsistent scale jumps
+.container {
+  gap: var(--spacing-xs);  /* 8px */
+  margin: var(--spacing-2xl);  /* Jumps to 48px */
+}`
+        }
+    ]}
+/>
+
+## Component Sizing
+
+<Table 
+    columns={[
+        { key: "component", header: "Component" },
+        { key: "size", header: "Size Token" },
+        { key: "value", header: "Value" }
+    ]}
+    data={[
+        { 
+            component: "Icon Button", 
+            size: "sm", 
+            value: "32px (2rem)" 
+        },
+        { 
+            component: "Regular Button", 
+            size: "md", 
+            value: "40px (2.5rem)" 
+        },
+        { 
+            component: "Large Button", 
+            size: "lg", 
+            value: "48px (3rem)" 
+        },
+        { 
+            component: "Input Field", 
+            size: "md", 
+            value: "40px (2.5rem)" 
+        },
+        { 
+            component: "Checkbox", 
+            size: "sm", 
+            value: "16px (1rem)" 
+        },
+        { 
+            component: "Modal Padding", 
+            size: "xl", 
+            value: "32px (2rem)" 
+        },
+        { 
+            component: "Card Padding", 
+            size: "lg", 
+            value: "24px (1.5rem)" 
+        },
+        { 
+            component: "Tooltip Padding", 
+            size: "xs", 
+            value: "8px (0.5rem)" 
+        }
+    ]}
+/> 

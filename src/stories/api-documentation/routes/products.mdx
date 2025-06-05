@@ -1,0 +1,320 @@
+import { Meta } from '@storybook/blocks';
+import { APIEndpoint } from '../../doc-blocks/APIEndpoint';
+import { Table } from '../../doc-blocks/Table';
+import { DosDonts } from '../../doc-blocks/DosDonts';
+
+<Meta title="API-Documentation/Routes/Products" />
+
+# Products API
+
+The Products API enables management of product resources in our e-commerce system. This documentation covers all product-related endpoints and best practices.
+
+## Overview
+
+<Table 
+    columns={[
+        { key: "operation", header: "Operation" },
+        { key: "endpoint", header: "Endpoint" },
+        { key: "description", header: "Description" }
+    ]}
+    data={[
+        { operation: "List Products", endpoint: "GET /api/products", description: "Retrieve a paginated list of products" },
+        { operation: "Get Product", endpoint: "GET /api/products/:id", description: "Retrieve a specific product by ID" },
+        { operation: "Update Product", endpoint: "PUT /api/products/:id", description: "Update a product's information" },
+        { operation: "Delete Product", endpoint: "DELETE /api/products/:id", description: "Remove a product from the system" }
+    ]}
+/>
+
+## List Products
+
+<APIEndpoint
+    method="GET"
+    path="/api/products"
+    description="Retrieve a paginated list of products"
+    parameters={[
+        {
+            name: "page",
+            type: "number",
+            required: false,
+            description: "Page number (default: 1)"
+        },
+        {
+            name: "limit",
+            type: "number",
+            required: false,
+            description: "Items per page (default: 20, max: 100)"
+        },
+        {
+            name: "category",
+            type: "string",
+            required: false,
+            description: "Filter by product category"
+        },
+        {
+            name: "minPrice",
+            type: "number",
+            required: false,
+            description: "Minimum price filter"
+        },
+        {
+            name: "maxPrice",
+            type: "number",
+            required: false,
+            description: "Maximum price filter"
+        },
+        {
+            name: "sort",
+            type: "string",
+            required: false,
+            description: "Sort field (e.g., 'price', 'name', 'createdAt')"
+        },
+        {
+            name: "order",
+            type: "string",
+            required: false,
+            description: "Sort order ('asc' or 'desc')"
+        }
+    ]}
+    responses={[
+        {
+            status: 200,
+            description: "Successfully retrieved products",
+            example: `{
+  "data": [
+    {
+      "id": "123",
+      "name": "Premium Widget",
+      "description": "High-quality widget for all your needs",
+      "price": 29.99,
+      "category": "widgets",
+      "stock": 100,
+      "images": ["url1", "url2"],
+      "createdAt": "2024-01-20T12:00:00Z"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "limit": 20,
+    "total": 45,
+    "pages": 3
+  }
+}`
+        },
+        {
+            status: 400,
+            description: "Invalid query parameters",
+            example: `{
+  "error": "Invalid price range",
+  "code": "INVALID_PRICE_RANGE",
+  "details": {
+    "minPrice": "Must be less than maxPrice"
+  }
+}`
+        }
+    ]}
+/>
+
+## Get Product
+
+<APIEndpoint
+    method="GET"
+    path="/api/products/:id"
+    description="Retrieve a specific product by ID"
+    parameters={[
+        {
+            name: "id",
+            type: "string",
+            required: true,
+            description: "Product's unique identifier"
+        }
+    ]}
+    responses={[
+        {
+            status: 200,
+            description: "Successfully retrieved product",
+            example: `{
+  "id": "123",
+  "name": "Premium Widget",
+  "description": "High-quality widget for all your needs",
+  "price": 29.99,
+  "category": "widgets",
+  "stock": 100,
+  "images": ["url1", "url2"],
+  "specifications": {
+    "weight": "2.5kg",
+    "dimensions": "10x15x20cm",
+    "color": "blue"
+  },
+  "createdAt": "2024-01-20T12:00:00Z",
+  "updatedAt": "2024-01-20T14:30:00Z"
+}`
+        },
+        {
+            status: 404,
+            description: "Product not found",
+            example: `{
+  "error": "Product not found",
+  "code": "PRODUCT_NOT_FOUND"
+}`
+        }
+    ]}
+/>
+
+## Update Product
+
+<APIEndpoint
+    method="PUT"
+    path="/api/products/:id"
+    description="Update a product's information"
+    parameters={[
+        {
+            name: "id",
+            type: "string",
+            required: true,
+            description: "Product's unique identifier"
+        },
+        {
+            name: "name",
+            type: "string",
+            required: false,
+            description: "Product name"
+        },
+        {
+            name: "description",
+            type: "string",
+            required: false,
+            description: "Product description"
+        },
+        {
+            name: "price",
+            type: "number",
+            required: false,
+            description: "Product price"
+        },
+        {
+            name: "category",
+            type: "string",
+            required: false,
+            description: "Product category"
+        },
+        {
+            name: "stock",
+            type: "number",
+            required: false,
+            description: "Available stock"
+        },
+        {
+            name: "images",
+            type: "string[]",
+            required: false,
+            description: "Array of image URLs"
+        },
+        {
+            name: "specifications",
+            type: "object",
+            required: false,
+            description: "Product specifications"
+        }
+    ]}
+    responses={[
+        {
+            status: 200,
+            description: "Successfully updated product",
+            example: `{
+  "id": "123",
+  "name": "Updated Widget",
+  "price": 34.99,
+  "updatedAt": "2024-01-20T16:00:00Z"
+}`
+        },
+        {
+            status: 400,
+            description: "Invalid input",
+            example: `{
+  "error": "Invalid price",
+  "code": "VALIDATION_ERROR",
+  "field": "price",
+  "details": "Price must be greater than 0"
+}`
+        }
+    ]}
+/>
+
+## Delete Product
+
+<APIEndpoint
+    method="DELETE"
+    path="/api/products/:id"
+    description="Remove a product from the system"
+    parameters={[
+        {
+            name: "id",
+            type: "string",
+            required: true,
+            description: "Product's unique identifier"
+        }
+    ]}
+    responses={[
+        {
+            status: 200,
+            description: "Successfully deleted product",
+            example: `{
+  "message": "Product successfully deleted",
+  "id": "123"
+}`
+        },
+        {
+            status: 409,
+            description: "Product in use",
+            example: `{
+  "error": "Cannot delete product with active orders",
+  "code": "PRODUCT_IN_USE"
+}`
+        }
+    ]}
+/>
+
+## Best Practices
+
+<DosDonts 
+    dos={[
+        {
+            title: "Image Optimization",
+            description: "Optimize product images before upload",
+            code: "const optimizedUrl = await optimizeImage(imageUrl)"
+        },
+        {
+            title: "Price Validation",
+            description: "Validate price format and range",
+            code: "validatePrice(price, { min: 0.01, max: 999999.99 })"
+        }
+    ]}
+    donts={[
+        {
+            title: "Stock Management",
+            description: "Don't allow negative stock values",
+            code: "if (stock < 0) throw new Error('Invalid stock value')"
+        },
+        {
+            title: "Category Names",
+            description: "Don't use spaces in category identifiers",
+            code: "category.toLowerCase().replace(/\s+/g, '-')"
+        }
+    ]}
+/>
+
+## Rate Limiting
+
+<Table 
+    columns={[
+        { key: "endpoint", header: "Endpoint" },
+        { key: "limit", header: "Rate Limit" },
+        { key: "window", header: "Time Window" }
+    ]}
+    data={[
+        { endpoint: "GET /products", limit: "1000 requests", window: "1 minute" },
+        { endpoint: "GET /products/:id", limit: "2000 requests", window: "1 minute" },
+        { endpoint: "PUT /products/:id", limit: "100 requests", window: "1 minute" },
+        { endpoint: "DELETE /products/:id", limit: "50 requests", window: "1 minute" }
+    ]}
+/> 

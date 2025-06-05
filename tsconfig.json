@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "incremental": false,
+    "isolatedModules": true,
+    "jsx": "react",
+    "lib": ["es2020", "dom"],
+    "module": "commonjs",
+    "target": "ES2020",
+    "noImplicitAny": true,
+    "typeRoots": ["./node_modules/@types"],
+    "rootDir": "./src",
+    "skipLibCheck": true,
+  },
+  "include": ["src/**/*", ".storybook-text-search/custom-extractors"]
+}

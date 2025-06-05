@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/blocks';
+import { DosDonts } from '../doc-blocks/DosDonts';
+import { Table } from '../doc-blocks/Table';
+
+<Meta title="Patterns/Data Tables" />
+
+# Data Table Patterns
+
+Guidelines for displaying and managing tabular data effectively.
+
+## Table Features
+
+<Table 
+    columns={[
+        { key: "feature", header: "Feature" },
+        { key: "purpose", header: "Purpose" },
+        { key: "implementation", header: "Implementation" }
+    ]}
+    data={[
+        { feature: "Sorting", purpose: "Order data by column values", implementation: "Click column headers" },
+        { feature: "Filtering", purpose: "Show subset of data", implementation: "Column filter dropdowns" },
+        { feature: "Pagination", purpose: "Manage large datasets", implementation: "Page size + navigation" },
+        { feature: "Selection", purpose: "Bulk actions on rows", implementation: "Checkboxes + action menu" },
+        { feature: "Column Resize", purpose: "Customize column widths", implementation: "Draggable column edges" }
+    ]}
+/>
+
+## Best Practices
+
+<DosDonts 
+    dos={[
+        {
+            title: "Progressive Loading",
+            description: "Load data in chunks for better performance",
+            code: "Implement virtual scrolling for large datasets"
+        },
+        {
+            title: "Responsive Design",
+            description: "Adapt table layout for different screens",
+            code: "Stack cells vertically on mobile"
+        }
+    ]}
+    donts={[
+        {
+            title: "Overload Information",
+            description: "Don't show too many columns by default",
+            code: "Show all 20+ columns at once"
+        },
+        {
+            title: "Ignore Mobile",
+            description: "Don't keep desktop layout on small screens",
+            code: "Force horizontal scroll on mobile"
+        }
+    ]}
+/> 

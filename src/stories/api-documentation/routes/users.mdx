@@ -1,0 +1,276 @@
+import { Meta } from '@storybook/blocks';
+import { APIEndpoint } from '../../doc-blocks/APIEndpoint';
+import { Table } from '../../doc-blocks/Table';
+import { DosDonts } from '../../doc-blocks/DosDonts';
+
+<Meta title="API-Documentation/Routes/Users" />
+
+# User Management API
+
+Our User Management API provides endpoints for creating, reading, updating, and deleting user resources. This documentation covers all user-related endpoints and best practices.
+
+## Overview
+
+<Table 
+    columns={[
+        { key: "operation", header: "Operation" },
+        { key: "endpoint", header: "Endpoint" },
+        { key: "description", header: "Description" }
+    ]}
+    data={[
+        { operation: "List Users", endpoint: "GET /api/users", description: "Retrieve a paginated list of users" },
+        { operation: "Get User", endpoint: "GET /api/users/:id", description: "Retrieve a specific user by ID" },
+        { operation: "Update User", endpoint: "PUT /api/users/:id", description: "Update a user's information" },
+        { operation: "Delete User", endpoint: "DELETE /api/users/:id", description: "Remove a user from the system" }
+    ]}
+/>
+
+## List Users
+
+<APIEndpoint
+    method="GET"
+    path="/api/users"
+    description="Retrieve a paginated list of users"
+    parameters={[
+        {
+            name: "page",
+            type: "number",
+            required: false,
+            description: "Page number (default: 1)"
+        },
+        {
+            name: "limit",
+            type: "number",
+            required: false,
+            description: "Items per page (default: 20, max: 100)"
+        },
+        {
+            name: "sort",
+            type: "string",
+            required: false,
+            description: "Sort field (e.g., 'createdAt', 'email')"
+        },
+        {
+            name: "order",
+            type: "string",
+            required: false,
+            description: "Sort order ('asc' or 'desc')"
+        }
+    ]}
+    responses={[
+        {
+            status: 200,
+            description: "Successfully retrieved users",
+            example: `{
+  "data": [
+    {
+      "id": "123",
+      "email": "john@example.com",
+      "name": "John Doe",
+      "role": "user",
+      "createdAt": "2024-01-20T12:00:00Z"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "limit": 20,
+    "total": 45,
+    "pages": 3
+  }
+}`
+        },
+        {
+            status: 401,
+            description: "Unauthorized access",
+            example: `{
+  "error": "Authentication required",
+  "code": "AUTH_REQUIRED"
+}`
+        },
+        {
+            status: 403,
+            description: "Insufficient permissions",
+            example: `{
+  "error": "Insufficient permissions to list users",
+  "code": "FORBIDDEN"
+}`
+        }
+    ]}
+/>
+
+## Get User
+
+<APIEndpoint
+    method="GET"
+    path="/api/users/:id"
+    description="Retrieve a specific user by ID"
+    parameters={[
+        {
+            name: "id",
+            type: "string",
+            required: true,
+            description: "User's unique identifier"
+        }
+    ]}
+    responses={[
+        {
+            status: 200,
+            description: "Successfully retrieved user",
+            example: `{
+  "id": "123",
+  "email": "john@example.com",
+  "name": "John Doe",
+  "role": "user",
+  "createdAt": "2024-01-20T12:00:00Z",
+  "lastLogin": "2024-01-20T15:30:00Z",
+  "preferences": {
+    "theme": "dark",
+    "notifications": true
+  }
+}`
+        },
+        {
+            status: 404,
+            description: "User not found",
+            example: `{
+  "error": "User not found",
+  "code": "USER_NOT_FOUND"
+}`
+        }
+    ]}
+/>
+
+## Update User
+
+<APIEndpoint
+    method="PUT"
+    path="/api/users/:id"
+    description="Update a user's information"
+    parameters={[
+        {
+            name: "id",
+            type: "string",
+            required: true,
+            description: "User's unique identifier"
+        },
+        {
+            name: "name",
+            type: "string",
+            required: false,
+            description: "User's full name"
+        },
+        {
+            name: "email",
+            type: "string",
+            required: false,
+            description: "User's email address"
+        },
+        {
+            name: "preferences",
+            type: "object",
+            required: false,
+            description: "User preferences object"
+        }
+    ]}
+    responses={[
+        {
+            status: 200,
+            description: "Successfully updated user",
+            example: `{
+  "id": "123",
+  "email": "john.updated@example.com",
+  "name": "John Updated Doe",
+  "role": "user",
+  "updatedAt": "2024-01-20T16:00:00Z"
+}`
+        },
+        {
+            status: 400,
+            description: "Invalid input",
+            example: `{
+  "error": "Invalid email format",
+  "code": "VALIDATION_ERROR",
+  "field": "email"
+}`
+        }
+    ]}
+/>
+
+## Delete User
+
+<APIEndpoint
+    method="DELETE"
+    path="/api/users/:id"
+    description="Remove a user from the system"
+    parameters={[
+        {
+            name: "id",
+            type: "string",
+            required: true,
+            description: "User's unique identifier"
+        }
+    ]}
+    responses={[
+        {
+            status: 200,
+            description: "Successfully deleted user",
+            example: `{
+  "message": "User successfully deleted",
+  "id": "123"
+}`
+        },
+        {
+            status: 403,
+            description: "Cannot delete own account",
+            example: `{
+  "error": "Cannot delete your own account",
+  "code": "SELF_DELETE_FORBIDDEN"
+}`
+        }
+    ]}
+/>
+
+## Best Practices
+
+<DosDonts 
+    dos={[
+        {
+            title: "Proper Authorization",
+            description: "Always check user permissions",
+            code: "await checkUserPermissions(currentUser, 'user.update')"
+        },
+        {
+            title: "Data Validation",
+            description: "Validate all user input",
+            code: "validateUserData(userInput)"
+        }
+    ]}
+    donts={[
+        {
+            title: "Sensitive Data",
+            description: "Don't expose sensitive user data",
+            code: "return { ...user, password: undefined }"
+        },
+        {
+            title: "Mass Assignment",
+            description: "Don't allow updating protected fields",
+            code: "const protectedFields = ['role', 'permissions']"
+        }
+    ]}
+/>
+
+## Rate Limiting
+
+<Table 
+    columns={[
+        { key: "endpoint", header: "Endpoint" },
+        { key: "limit", header: "Rate Limit" },
+        { key: "window", header: "Time Window" }
+    ]}
+    data={[
+        { endpoint: "GET /users", limit: "100 requests", window: "1 minute" },
+        { endpoint: "GET /users/:id", limit: "300 requests", window: "1 minute" },
+        { endpoint: "PUT /users/:id", limit: "50 requests", window: "1 minute" },
+        { endpoint: "DELETE /users/:id", limit: "10 requests", window: "1 minute" }
+    ]}
+/> 

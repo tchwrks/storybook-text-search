@@ -1,0 +1,116 @@
+import { Meta } from '@storybook/blocks';
+import { Table } from '../doc-blocks/Table';
+import { DosDonts } from '../doc-blocks/DosDonts';
+
+<Meta title="Guides/State Management" />
+
+# State Management Guide
+
+Learn about our approach to managing application state effectively.
+
+## State Categories
+
+<Table 
+    columns={[
+        { key: "category", header: "Category" },
+        { key: "description", header: "Description" },
+        { key: "example", header: "Example" }
+    ]}
+    data={[
+        { 
+            category: "UI State", 
+            description: "Temporary visual states", 
+            example: "Modal visibility, loading states" 
+        },
+        { 
+            category: "Form State", 
+            description: "User input data", 
+            example: "Form values, validation errors" 
+        },
+        { 
+            category: "Server State", 
+            description: "Data from API", 
+            example: "User profile, settings" 
+        },
+        { 
+            category: "URL State", 
+            description: "Route parameters", 
+            example: "Search filters, pagination" 
+        }
+    ]}
+/>
+
+## State Management Patterns
+
+<DosDonts 
+    dos={[
+        {
+            title: "Colocate State",
+            description: "Keep state close to where it's used",
+            code: `function UserProfile() {
+  const [isEditing, setIsEditing] = useState(false);
+  // Used only in this component
+  return (/* ... */);
+}`
+        },
+        {
+            title: "Derive State",
+            description: "Calculate values instead of storing them",
+            code: `const totalPrice = items.reduce(
+  (sum, item) => sum + item.price, 0
+);`
+        }
+    ]}
+    donts={[
+        {
+            title: "Global State",
+            description: "Don't put everything in global state",
+            code: `// Don't do this
+const store = {
+  modalOpen: false,  // Should be component state
+  lastClick: Date.now(),  // Unnecessary state
+  windowWidth: 1200  // Use hooks instead
+};`
+        },
+        {
+            title: "Duplicate State",
+            description: "Don't store derived values",
+            code: `// Don't store what you can calculate
+const [items, setItems] = useState([]);
+const [itemCount, setItemCount] = useState(0);  // Bad
+// Just use items.length instead`
+        }
+    ]}
+/>
+
+## State Updates
+
+<Table 
+    columns={[
+        { key: "pattern", header: "Pattern" },
+        { key: "example", header: "Example" },
+        { key: "when", header: "When to Use" }
+    ]}
+    data={[
+        { 
+            pattern: "Immutable Updates", 
+            example: "setItems([...items, newItem])", 
+            when: "Adding/removing items" 
+        },
+        { 
+            pattern: "Functional Updates", 
+            example: "setCount(c => c + 1)", 
+            when: "Updates based on previous state" 
+        },
+        { 
+            pattern: "Batch Updates", 
+            example: "useReducer(reducer, initial)", 
+            when: "Multiple related state changes" 
+        },
+        { 
+            pattern: "Optimistic Updates", 
+            example: "Update UI before API call", 
+            when: "Improving perceived performance" 
+        }
+    ]}
+/> 

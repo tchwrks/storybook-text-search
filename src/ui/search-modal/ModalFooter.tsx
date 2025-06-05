@@ -39,8 +39,8 @@ const ModalFooter = ({ screenWidth }: ModalFooterProps) => {
                 </span>
             </a>
             {!isMobile && <span>|</span>}
-            <a href="https://github.com/nextapps-de/flexsearch" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
-                <span style={{ color: "#888" }}>Powered by FlexSearch</span>
+            <a href="https://lucaong.github.io/minisearch/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+                <span style={{ color: "#888" }}>Powered by MiniSearch</span>
             </a>
         </div>
     )

@@ -8,7 +8,7 @@ import {
 } from "./custom-extractors/index.js";
 
 const config = {
-  inputPaths: ["./src/stories/**/*.mdx", "./src/**/*.stories.{js,jsx,ts,tsx}"],
+  inputPaths: ["../src/stories/**/*.mdx", "../src/**/*.stories.{js,jsx,ts,tsx}"],
   outputDebugJson: true,
   maxJsxDepth: 5,
   jsxPropAllowList: ['alt', 'title', 'aria-label', 'placeholder', 'label', 'value', 'children'],

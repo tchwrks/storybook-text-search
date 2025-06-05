@@ -15,8 +15,7 @@ export type ExtractionRule =
   | ((node: any) => string[]);
 
 export interface TextSearchConfig {
-  inputPaths: string | string[]; // support glob
-  outputDebugJson: boolean;
+  inputPaths: string[]; // support glob
   jsxTextMap?: Record<string, ExtractionRule>;
   maxJsxDepth: number;
   jsxPropAllowList: string[];

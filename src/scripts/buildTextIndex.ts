@@ -24,8 +24,8 @@ const CONFIG_FILE = 'config.js';
 
 
 export async function buildTextIndex() {
-    const configPath = path.resolve(process.cwd(), TOOL_DIR, CONFIG_FILE);
-    console.log(configPath);
+    const toolDirPath = path.resolve(process.cwd(), TOOL_DIR);
+    const configPath = path.resolve(toolDirPath, CONFIG_FILE);
 
     try {
         await fs.access(configPath);
@@ -35,27 +35,14 @@ export async function buildTextIndex() {
 
     const configUrl = pathToFileURL(configPath).href;
     const config: TextSearchConfig = (await import(configUrl)).default;
-    console.log(config);
-    if (config.outputDebugJson) {
-        console.log('📦 Loaded config outputting both index and docs');
+
+    if (Array.isArray(config.inputPaths)) {
+        config.inputPaths = config.inputPaths.map(p => path.resolve(toolDirPath, p));
     } else {
-        console.log("📦 Loaded config outputting index only");
+        throw new Error("❌ config.inputPaths must be an array of string(s). If using a single path, please place it in an array");
     }
 
-    // Flexsearch
-    const docs: SearchDoc[] = await generateDocs({ config: config, rootDir: process.cwd() });
-
-    // const index = new Document({
-    //     tokenize: 'forward',
-    //     worker: false,
-    //     document: {
-    //         id: 'id',
-    //         index: ['title', 'content'],
-    //         store: ['id', 'title', 'content', 'snippet', 'sourcePath', 'type', 'metaTitle'],
-    //     },
-    // });
-
-    // docs.forEach(doc => index.add(doc));
+    const docs: SearchDoc[] = await generateDocs({ config: config, rootDir: toolDirPath });
 
     // MiniSearch
     const mini = new MiniSearch({
@@ -68,33 +55,19 @@ export async function buildTextIndex() {
         },
     });
     mini.addAll(docs);
-    // console.log("MiniSearch index built", mini.toJSON());
 
     const outputDir = path.resolve(process.cwd(), TOOL_DIR, 'artifacts');
     await fs.mkdir(outputDir, { recursive: true });
 
-    if (config.outputDebugJson) {
-        await fs.writeFile(path.join(outputDir, 'text-search-docs.json'), JSON.stringify(docs, null, 2));
-    }
 
-    // const serializedIndex: Record<string, string> = {};
-    // index.export((key, data) => {
-    //     serializedIndex[key] = data;
-    // });
+    await fs.writeFile(path.join(outputDir, 'text-search-docs.json'), JSON.stringify(docs, null, 2));
 
-    // await fs.writeFile(path.join(outputDir, 'text-search-index.json'), JSON.stringify(serializedIndex, null, 2));
 
-    const miniIndexJson = mini.toJSON();
-    await fs.writeFile(
-        path.join(outputDir, 'mini-text-search-index.json'),
-        JSON.stringify(miniIndexJson, null, 2)
-    );
-
-    if (docs.length > 0 && miniIndexJson.documentCount > 0) {
+    if (docs.length > 0 && mini.documentCount > 0) {
         console.log("✅ storybook-text-search index built with", docs.length, "docs!");
     } else {
         console.log("❌ No docs found in storybook-text-search index!");
     }
 
-    return { docs, miniIndexJson };
+    return { docs };
 }

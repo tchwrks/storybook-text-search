@@ -7,11 +7,15 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/storybookjs/storybook-addon-kit"
+    "url": "https://github.com/tchwrks/storybook-text-search"
   },
   "type": "module",
   "license": "MIT",
-  "author": "package-author",
+  "author": {
+    "name": "techworks studio",
+    "url": "https://techworks.studio",
+    "email": "help@techworks.studio"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

@@ -1,12 +1,12 @@
 <!-- README START -->
 <p align="center">
-  <img src=".github/assets/brandmark-addon-name-banner-white-on-transp.png" alt="Storybook Text Search banner" width="100%" />
+  <img src=".github/assets/brandmark-addon-name-banner-lime-on-blk.png" alt="Storybook Text Search banner" width="100%" />
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/npm/v/@tchwrks/storybook-text-search" />
-  <img src="https://img.shields.io/npm/l/@tchwrks/storybook-text-search" />
-  <img src="https://img.shields.io/bundlephobia/minzip/@tchwrks/storybook-text-search" />
+  <img src="https://img.shields.io/npm/v/%40tchwrks%2Fstorybook-text-search" />
+  <img src="https://img.shields.io/github/license/tchwrks/storybook-text-search" />
+  <img src="https://img.shields.io/npm/unpacked-size/%40tchwrks%2Fstorybook-text-search" />
 </p>
 
 ***

@@ -1,6 +1,6 @@
 {
   "name": "@tchwrks/storybook-text-search",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A Storybook addon that enables full-text search through your MDX files.",
   "keywords": [
     "storybook-addons",

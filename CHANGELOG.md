@@ -10,6 +10,18 @@
 
 ---
 
+# v0.0.3 (Fri Jun 06 2025)
+
+#### ⚠️ Pushed to `main`
+
+- ∆ pkg registry-> npm (noahdavis35@att.net)
+
+#### Authors: 1
+
+- Noah Davis (noahdavis35@att.net)
+
+---
+
 # v0.0.2 (Fri Jun 06 2025)
 
 

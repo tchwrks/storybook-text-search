@@ -1,3 +1,15 @@
+# v0.0.7 (Fri Jun 06 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Removed addon kit scripts, other cleanup (noahdavis35@att.net)
+
+#### Authors: 1
+
+- Noah Davis (noahdavis35@att.net)
+
+---
+
 # v0.0.6 (Fri Jun 06 2025)
 
 #### ⚠️ Pushed to `main`

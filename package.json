@@ -114,7 +114,6 @@
     "storybook": "0.0.0-pr-26654-sha-49d01553"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/",
     "access": "public"
   },
   "bundler": {

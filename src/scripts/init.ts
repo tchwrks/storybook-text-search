@@ -45,6 +45,7 @@ const main = async (): Promise<void> => {
     // 7
     await createTextSearchConfig({
         targetDir: path.join(projectRoot, '.storybook-text-search'),
+        fileName: "config.mjs",
         stories,
     });
 

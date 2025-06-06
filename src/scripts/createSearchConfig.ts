@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+// TODO: Accept CJS as well as ESM (.mjs)
+
 import path from 'path';
 import fs from 'fs/promises';
 import {

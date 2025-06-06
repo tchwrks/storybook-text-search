@@ -10,12 +10,14 @@
 </p>
 
 ***
+<br/>
 
-A Storybook addon that enables full-text search through your component and documentation content.
+`@tchwrks/storybook-text-search` is a Storybook addon that enables full-text search across MDX content:
 
-- 🔍 Builds an MDX/code/documentation index at startup
-- 💡 Integrates a search bar into the Storybook manager UI as a toolbar
+- 🔍 Builds an MDX/documentation index at startup (Stories / autodocs parsing on the roadmap)
+- 💡 Integrates a "search bar" toolbar trigger and modern search modal into the Storybook manager UI
 - ♻️ Automatically rebuilds index on hot reload
+- 🎹 100% keyboard accessible
 - ⚙️ Works with both Vite and Webpack Storybook builders
 - ✍️ Written in *(mostly)* TypeScript using the official [Addon Kit](https://github.com/storybookjs/addon-kit)
 - 🐭 Sub 200KB index for >20 MDX files
@@ -32,6 +34,10 @@ A Storybook addon that enables full-text search through your component and docum
   - [Full `config.mjs` Options](#full-configmjs-options)
     - [Extraction Rule Type](#extraction-rule-type)
   - [Utilizing `config.jsxTextMap`](#utilizing-configjsxtextmap)
+- [About](#about)
+    - [Built by Techworks Studio](#built-by-techworks-studio)
+    - [Other goodies from techworks](#other-goodies-from-techworks)
+    - [Connect](#connect)
 - [License](#license)
 - [Roadmap](#roadmap)
 
@@ -140,7 +146,7 @@ For most setups, this is all you need to get going. Just start Storybook like us
 
 ## Usage
 
-Usage of this addon is pretty straightforward once you set it up. Just keep adding `*.mdx` docs into the directories you specified in your `.storybook-text-search/config.mjs` and they'll be automatically indexed on Storybook startup and hot reload.
+Usage of this addon is pretty straightforward once you set it up. Just add `*.mdx` docs into the paths you defined in your `.storybook-text-search/config.mjs` and they'll be automatically indexed on Storybook startup and hot reload.
 
 When Storybook is running, you can open the search modal by clicking the trigger in the toolbar labeled **"Find MDX Text"** or by using the keyboard shortcut `Shift + Cmd + K`. Once open, you can use your mouse/trackpad or the following keyboard shortcuts to navigate:
 
@@ -153,7 +159,7 @@ When Storybook is running, you can open the search modal by clicking the trigger
 
 You can adjust the positioning of the search modal trigger / search bar by adjusting where you place `@tchwrks/storybook-text-search` in your `.storybook/main` addon array. Beginning of array = leftmost toolbar spot, end of array = rightmost toolbar spot.
 
-While the addon can pick up on raw markdown and parse basic text rendered in React/JSX as children or props by leveraging just the `maxJsxDepth` and `jsxPropsAllowList` fields in the `config.mjs`, you may find that it does not fully parse or normalize the text. In which case, please consider leveraging the `jsxTextMap` field in the `config.mjs`. It allows you to map out extraction behavior React/JSX on a per-component basis. See [Advanced Configuration](#advanced-configuration) for further documentation on this
+While the addon can pick up on raw markdown and parse basic text rendered in JSX as children or props by leveraging just the `maxJsxDepth` and `jsxPropsAllowList` fields in the `config.mjs`, you may find that it does not fully parse or normalize the text. In which case, please consider leveraging the `jsxTextMap` field in the `config.mjs`. It allows you to map out extraction behavior for JSX on a per-component basis. See [Advanced Configuration](#advanced-configuration) for further documentation on this.
 
 If for whatever reason you would like to re-run the initialization script or manually trigger an index rebuild, you can run either of the following scripts:
 
@@ -346,6 +352,24 @@ export function tableExtractor(node) {
 - [Basic configuration setup](#ill-do-it-myself) 
 - [Addon usage](#usage)
 
+## About
+####  Built by Techworks Studio
+[Techworks Studio](https://techworks.studio) is a hybrid consultancy and R&D studio crafting tools and solutions that empower bold ideas, streamline workflows, and elevate user experiences
+
+#### Other goodies from techworks
+
+- [tokenXtractor](https://www.figma.com/community/plugin/1401554311953331143/tokenxtractor-by-techworks-studio) - Free Figma plugin for extracting local variables (tokens) into a more code-ready format. Control which collections get exported and how
+- [Figma Plugin React]([https://](https://github.com/noahidavis/figma-plugin-react-2024)) - TS template for creating Figma plugins with a React template
+
+#### Connect
+This addon is built maintained by [Noah Davis](https://noahidavis.com) at Techworks Studio
+
+- [Personal Portfolio](https://noahidavis.com)
+- [LinkedIn](https://linkedin.com/in/noahidavis)
+- [X/Twitter](https://x.com/noahidavis)
+
+Have feedback, ideas, or a collaboration in mind? Reach out anytime
+
 ## License
 
 [MIT](LICENSE)
@@ -358,7 +382,5 @@ export function tableExtractor(node) {
 
 <br/>
 <br/>
-
-Made with love by [Noah Davis](https://noahidavis.com) of [techworks.studio](https://techworks.studio)
 
 <!-- README END -->

@@ -23,6 +23,10 @@
 - 🐭 Sub 200KB index for >20 MDX files
 - 🏎️ Fast local search. No server needed. No 3-5 business days for results
 
+<br/>
+
+>⚠️ **Note:** *This addon has not performed the Storybook 9.0 migrations yet. A new major version supporting Storybook 9.0 will be released soon. This addon also **does not** currently support the React Native framework. [Limited functionality](#note-on-framework-compatibility) for non-react frameworks*
+
 ## Table of Contents
 - [Table of Contents](#table-of-contents)
 - [Getting Started](#getting-started)
@@ -30,13 +34,15 @@
   - [Configuration](#configuration)
     - ["Trust the process"](#trust-the-process)
     - ["I'll do it myself"](#ill-do-it-myself)
+- [Usage](#usage)
+  - [Note on Framework Compatibility](#note-on-framework-compatibility)
 - [Advanced Configuration](#advanced-configuration)
   - [Full `config.mjs` Options](#full-configmjs-options)
     - [Extraction Rule Type](#extraction-rule-type)
   - [Utilizing `config.jsxTextMap`](#utilizing-configjsxtextmap)
 - [About](#about)
     - [Built by Techworks Studio](#built-by-techworks-studio)
-    - [Other goodies from techworks](#other-goodies-from-techworks)
+    - [Other goodies from Techworks](#other-goodies-from-techworks)
     - [Connect](#connect)
 - [License](#license)
 - [Roadmap](#roadmap)
@@ -164,11 +170,19 @@ While the addon can pick up on raw markdown and parse basic text rendered in JSX
 If for whatever reason you would like to re-run the initialization script or manually trigger an index rebuild, you can run either of the following scripts:
 
 ```bash
-npx storybook-text-search-init  # addon initialization
+npx storybook-search-init  # addon initialization
 
-npx storybook-text-search-build  # build index
+npx storybook-search-build-index  # build index
 ```
 >*A hosted Storybook with expanded documentation and a live demo will be released soon*
+
+### Note on Framework Compatibility
+
+This addon works with all Storybook frameworks that support MDX, including React, Vue, and Angular.
+
+However, advanced text extraction from JSX components (like parsing strings from nested props or child elements) is currently optimized for React-style JSX. If you're using Vue or Angular, the addon will still index standard Markdown and inline HTML correctly — just avoid framework-specific bindings or dynamic components in `.mdx` files.
+
+>Tip: For the best results in Vue or Angular or other non-react frameworks, write MDX with plain HTML/Markdown content. Full JSX-style extraction for other frameworks may be added in the future. If you are interested in accelerating that timeline, [reach out](#connect).
 
 ## Advanced Configuration
 
@@ -243,9 +257,9 @@ const config = {
 export default config;
 ```
 
-When defining `ExtractionRule` functions (Table from the code above), it is recommended you write them as plain `*.js` files. ESM vs CJS shouldn't make a difference--but likely won't need extra deps anyway. 
+When defining `ExtractionRule` functions (Table from the code above), it is recommended you write them as plain `*.js` files. ESM vs CJS shouldn't make a difference--but you likely won't need extra deps anyway. 
 
-Given a `Table` component that looks like the following:
+Given an a MDX file that contains a `Table` component that looks like the following:
 
 ```typescript
 import React from "react";
@@ -296,7 +310,7 @@ export function Table<T extends Record<string, any>>({ columns, data, className 
 }
 ```
 
-A custom `ExtractionRule` function for that component might look like this:
+... a custom `ExtractionRule` function for that component might look like this:
 
 ```javascript
 // .storybook-text-search/custom-extractors (or wherever you want to put it--knock yourself out)
@@ -354,15 +368,15 @@ export function tableExtractor(node) {
 
 ## About
 ####  Built by Techworks Studio
-[Techworks Studio](https://techworks.studio) is a hybrid consultancy and R&D studio crafting tools and solutions that empower bold ideas, streamline workflows, and elevate user experiences
+[Techworks Studio](https://techworks.studio) is a hybrid consultancy and R&D studio crafting tools and solutions that empower bold ideas, redefine workflows, and deliver meaningful user experiences
 
-#### Other goodies from techworks
+#### Other goodies from Techworks
 
 - [tokenXtractor](https://www.figma.com/community/plugin/1401554311953331143/tokenxtractor-by-techworks-studio) - Free Figma plugin for extracting local variables (tokens) into a more code-ready format. Control which collections get exported and how
-- [Figma Plugin React]([https://](https://github.com/noahidavis/figma-plugin-react-2024)) - TS template for creating Figma plugins with a React template
+- [Figma Plugin React Template (2024)](https://https://github.com/noahidavis/figma-plugin-react-2024) - TS template for creating Figma plugins with a React for the UI
 
 #### Connect
-This addon is built maintained by [Noah Davis](https://noahidavis.com) at Techworks Studio
+This addon is built and maintained by [Noah Davis](https://noahidavis.com) of [Techworks Studio](https://techworks.studio)
 
 - [Personal Portfolio](https://noahidavis.com)
 - [LinkedIn](https://linkedin.com/in/noahidavis)
@@ -375,12 +389,20 @@ Have feedback, ideas, or a collaboration in mind? Reach out anytime
 [MIT](LICENSE)
 
 ## Roadmap
+- [ ] Storybook 9.0 migration + major bump
 - [ ] Demo-embedded docs
 - [ ] React: Parse stories + component definitions (for autodocs)
 - [ ] Advanced searches (multi-keyword, boolean operations, etc)
 - [ ] Expanded config
 
-<br/>
-<br/>
+## Ready to stop playing Where's Wally with your Storybook docs?
+```bash
+yarn add -D @tchwrks/storybook-text-search
+# or
+npm i -D @tchwrks/storybook-text-search
+
+npx storybook-search-init
+```
+*Yup. Up and running in just 2 commands . . .*
 
 <!-- README END -->

@@ -130,18 +130,28 @@ export async function modifyStorybookMain({
 
     const storiesArray = ensureArrayProperty(configObject, 'stories');
     const addonsArray = ensureArrayProperty(configObject, 'addons');
-    const staticDirsArray = ensureArrayProperty(configObject, 'staticDirs');
 
     // Exit early if necessary fields aren't found. Possibly malformed .storybook/main
     // Exit early if required fields aren't found
-    if (!storiesArray || !addonsArray || !staticDirsArray) {
-        console.log('❌ One or more required fields (stories, addons, staticDirs) not found in your Storybook config. Aborting without making changes.');
+    if (!storiesArray || !addonsArray) {
+        console.log('❌ One or more required fields (stories, addons) not found in your Storybook config. Aborting without making changes.');
         return [];
+    }
+
+    let staticDirsArray = ensureArrayProperty(configObject, 'staticDirs');
+
+    if (!staticDirsArray) {
+        console.log('⚠️ staticDirs field not found. Adding it to config...');
+        staticDirsArray = configObject.addPropertyAssignment({
+            name: 'staticDirs',
+            initializer: '[]'
+        }).getInitializerIfKindOrThrow(SyntaxKind.ArrayLiteralExpression);
     }
 
     const preferredQuote = detectPreferredQuoteStyle(sourceFile);
     const addedAddon = addUniqueValueToArray(addonsArray, addonName, preferredQuote);
     const addedStaticDir = addUniqueValueToArray(staticDirsArray, staticDir, preferredQuote);
+
 
     const rawGlobs = getLiteralArrayValues(storiesArray);
     const fixed = rawGlobs.map(pattern => {
@@ -173,6 +183,9 @@ export async function modifyStorybookMain({
         return fixed;
     }
 
+    // Try to clean up any weird indentations or extraneous spaces
+    addonsArray.getParentOrThrow().formatText();
+    staticDirsArray.getParentOrThrow().formatText();
     await sourceFile.save();
 
     if (addedAddon) {

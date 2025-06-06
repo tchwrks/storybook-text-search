@@ -3,11 +3,31 @@
   "version": "0.0.0",
   "description": "A Storybook addon that enables full-text search through your MDX files.",
   "keywords": [
-    "storybook-addons"
+    "storybook-addons",
+    "search",
+    "text",
+    "docs",
+    "mdx"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/tchwrks/storybook-text-search"
+  },
+  "storybook": {
+    "displayName": "Text Search",
+    "unsupportedFrameworks": [
+      "react-native"
+    ],
+    "supportedFrameworks": [
+      "react",
+      "vue",
+      "angular",
+      "web-components",
+      "html",
+      "svelte",
+      "preact"
+    ],
+    "icon": "https://techworks.studio/assets/tchwrks-brandmark-blk-on-lime.png"
   },
   "type": "module",
   "license": "MIT",
@@ -88,7 +108,7 @@
     "zx": "^7.2.3"
   },
   "peerDependencies": {
-    "storybook": "^8.3.0 || 0.0.0-pr-26654-sha-49d01553"
+    "storybook": ">8.1.0 <9.0.0 || 0.0.0-pr-26654-sha-49d01553"
   },
   "overrides": {
     "storybook": "0.0.0-pr-26654-sha-49d01553"
@@ -109,13 +129,6 @@
       "src/bin/init.js",
       "src/bin/build.js"
     ]
-  },
-  "storybook": {
-    "displayName": "Text Search",
-    "supportedFrameworks": [
-      "supported-frameworks"
-    ],
-    "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
   },
   "packageManager": "yarn@4.9.1+sha256.6ffc213b3ce0af5c92507977d9537ea3cc085caa52d1c3f08e94d613407fed19"
 }

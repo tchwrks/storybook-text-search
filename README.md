@@ -373,7 +373,7 @@ export function tableExtractor(node) {
 #### Other goodies from Techworks
 
 - [tokenXtractor](https://www.figma.com/community/plugin/1401554311953331143/tokenxtractor-by-techworks-studio) - Free Figma plugin for extracting local variables (tokens) into a more code-ready format. Control which collections get exported and how
-- [Figma Plugin React Template (2024)](https://https://github.com/noahidavis/figma-plugin-react-2024) - TS template for creating Figma plugins with a React for the UI
+- [Figma Plugin React Template (2024)](https://github.com/noahidavis/figma-plugin-react-2024) - TS template for creating Figma plugins with a React for the UI
 
 #### Connect
 This addon is built and maintained by [Noah Davis](https://noahidavis.com) of [Techworks Studio](https://techworks.studio)

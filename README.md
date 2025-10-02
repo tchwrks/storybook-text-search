@@ -25,7 +25,13 @@
 
 <br/>
 
->⚠️ **Note:** *This addon has not performed the Storybook 9.0 migrations yet. A new major version supporting Storybook 9.0 will be released soon. This addon also **does not** currently support the React Native framework. [Limited functionality](#note-on-framework-compatibility) for non-react frameworks*
+> [!note]
+> To the two devs who stumbled across this addon before I even announced it and starred the repo—you know who you are—thank you. Ya'll are the real MVPs and the fire under my a** to get this `v1.0.0`, Storybook 9 migration done.
+>
+> In the meantime,`v0.0.8` is live. The main change is support for a `pathPrefix` field in the `config.mjs`. This now ensures the addon works when deployed to sub paths like with Github pages w/o a custom domain, where your repo name is treated as the "slug" prefixing all routes.
+
+>[!Warning] 
+> *This addon has not performed the Storybook 9.0 migrations yet. A new major version supporting Storybook 9.0 will be released soon. This addon also **does not** currently support the React Native framework. [Limited functionality](#note-on-framework-compatibility) for non-react frameworks*
 
 ## Table of Contents
 - [Table of Contents](#table-of-contents)

@@ -228,6 +228,10 @@ import {
 } from './custom-extractors/index.js';
 
 const config = {
+  // Optional - slug to prefix all paths with during indexing. Essential for deployments to subdomains. No slashes. As it appears in the address bar.
+  // ...(e.g. github pages where paths are prefixes with the repo name. 
+  // ...For example, tchrwks.github.io/storybook-text-search -> pathPrefix: 'storybook-text-search')
+  pathPrefix: undefined,
   // inputPaths ≈ stories from .storybook/main.{ts,js}. Glob ext should be written like example
   // ...for single dir, still place inside an array
   inputPaths: ['../src/stories/**/*.mdx', '../src/**/*.stories.{js,jsx,ts,tsx}'],
@@ -235,7 +239,7 @@ const config = {
   maxJsxDepth: 5,
   // Props to parse for fallback jsx parse (opt for jsxTextMap entry when possible)
   jsxPropAllowList: ['alt', 'title', 'aria-label', 'placeholder', 'label', 'value', 'children'],
-  // Custom / more explicit parsing
+  // Optional -> Custom / more explicit parsing
   jsxTextMap: {
     // Shorthand (similar to jsxPropAllowList, just scoped)
     Badge: ['callout'],

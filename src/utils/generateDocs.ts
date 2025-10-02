@@ -39,11 +39,17 @@ export async function generateDocs({ config, rootDir }: GenerateDocsOptions): Pr
             const content = text.join(" ");
             const relativePath = path.relative(rootDir, fullPath);
             const fileName = path.basename(fullPath).replace(/\.[^/.]+$/, '');
+            const baseDocsNavUrl: string = '/?path=/docs';
+            const formattedDocSlug = metaTitle.toLowerCase().replace(/^\//, '').replace(/[\/\s_]+/g, '-');
+            const docHref = config.pathPrefix && config.pathPrefix.length > 0
+                ? `${baseDocsNavUrl}/${config.pathPrefix}/${formattedDocSlug}`
+                : `${baseDocsNavUrl}/${formattedDocSlug}`;
 
             docs.push({
                 id: relativePath.replace(/\.[^/.]+$/, ''),
                 title: fileName,
                 content,
+                docHref,
                 snippet: content.slice(0, 150).replace(/\s+/g, " ") + "…",
                 sourcePath: fullPath,
                 metaTitle,

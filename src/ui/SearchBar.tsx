@@ -51,7 +51,7 @@ export const SearchBar = () => {
 
                 const mini = new MiniSearch({
                     fields: ['title', 'content'],
-                    storeFields: ['id', 'title', 'content', 'snippet', 'sourcePath', 'type', 'metaTitle'],
+                    storeFields: ['id', 'title', 'content', 'snippet', 'docHref', 'sourcePath', 'type', 'metaTitle'],
                     searchOptions: {
                         boost: { title: 2 },
                         prefix: true,
@@ -99,6 +99,7 @@ export const SearchBar = () => {
                 snippet: r.snippet,
                 sourcePath: r.sourcePath,
                 type: r.type,
+                docHref: r.docHref,
                 metaTitle: r.metaTitle,
             };
             unique.set(r.id, safeDoc);
@@ -170,10 +171,10 @@ export const SearchBar = () => {
 
     // 🧭 Handle navigation to the selected doc
     const handleClick = (doc: SearchDoc) => {
-        if (doc.metaTitle) {
-            const formatted = doc.metaTitle.toLowerCase().replace(/^\//, '').replace(/[\/\s_]+/g, '-');
-            window.location.href = `/?path=/docs/${formatted}`;
+        if (doc.docHref) {
+            window.location.href = doc.docHref;
         } else if (doc.storyId) {
+            // Will fix this when story indexing is added...if it aint broke....
             window.location.href = `/?path=/docs/${doc.storyId}`;
         } else {
             console.warn("No story ID found for doc", doc);

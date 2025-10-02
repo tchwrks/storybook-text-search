@@ -7,7 +7,7 @@ const config: StorybookConfig = {
     "@storybook/addon-interactions",
     '@tchwrks/storybook-text-search'
   ],
-  staticDirs: ['../.storybook-text-search/artifacts', '../src/assets'],
+  staticDirs: ['../.storybook-text-search/artifacts', '../src/stories/assets'],
   framework: {
     name: "@storybook/react-vite",
     options: {},

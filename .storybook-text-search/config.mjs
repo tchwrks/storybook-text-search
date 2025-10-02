@@ -1,5 +1,3 @@
-/** @type {import('src/types/index').TextSearchConfig} */
-
 import {
   tableExtractor,
   colorPaletteExtractor,

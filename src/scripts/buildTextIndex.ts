@@ -14,6 +14,7 @@ export interface SearchDoc {
     content: string;
     metaTitle?: string;
     snippet?: string;
+    docHref?: string;
     sourcePath: string;
     type?: 'mdx' | 'story' | 'other';
     [key: string]: string | undefined;
@@ -47,7 +48,7 @@ export async function buildTextIndex() {
     // MiniSearch
     const mini = new MiniSearch({
         fields: ['title', 'content'],
-        storeFields: ['id', 'title', 'content', 'snippet', 'sourcePath', 'type', 'metaTitle'],
+        storeFields: ['id', 'title', 'content', 'snippet', 'docHref', 'sourcePath', 'type', 'metaTitle'],
         searchOptions: {
             boost: { title: 2 },
             prefix: true,

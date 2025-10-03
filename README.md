@@ -93,7 +93,7 @@ For most setups, this is all you need to get going. Just start Storybook like us
 <br/>
 <summary>Fine. Since you want to be a grown-up, complete the following:</summary>
 
-1. Create the tool / addon directory, `.storybook-text-search/` at your project's root (or at the same level as your `.storybook/` 
+1. Create the tool / addon directory, `.storybook-text-search/` at your project's root or at the same level as your `.storybook/` 
    
 2. Create a `.storybook-text-search/config.mjs`:
     ```javascript
@@ -204,6 +204,7 @@ This is where things get lengthy. You've been warned . . .
 | Field | Type | Description |
 | ----  | ---- | ---- |
 | `inputPaths` | `string[]` | MDX and story globs. Use `.{.foo, .bar}` for glob extensions |
+| `pathPrefix` | `string \| undefined` |  Slug to prefix all paths with during indexing. Essential for deployments to subpaths like GitHub Pages w/o a custom domain. Do not include slashes (e.g. `pathPrefix: "your-repo-name"`)
 | `maxJsxDepth` | `number` | Recursion depth for parsing JSX |
 | `jsxPropsAllowList` | `string[]` | JSX props to extract using default extraction logic |
 | `jsxTextMap` | `Record<string, ExtractionRule>` | Per-component mapping

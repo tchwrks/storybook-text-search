@@ -16,7 +16,7 @@ export type ExtractionRule =
   | ((node: any) => string[]);
 
 export interface TextSearchConfig {
-  /** slug to prefix all paths with during indexing. Essential for deployments to subdomains (e.g. github pages where paths are prefixes with the repo name) */
+  /** slug to prefix all paths with during indexing. Essential for deployments to sub paths (e.g. github pages where paths are prefixes with the repo name) */
   pathPrefix?: string;
   /** paths containing mdx docs. Glob paths supported */
   inputPaths: string[];

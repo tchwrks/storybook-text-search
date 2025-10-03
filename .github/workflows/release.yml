@@ -17,12 +17,15 @@ jobs:
         with:
           node-version: 18.x
 
+      - name: Enable corepack
+        run: corepack enable
+
       - name: Install dependencies
-        run: npm install --ignore-scripts
+        run: yarn install --immutable
 
       - name: Create Release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_AND_NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.GH_AND_NPM_TOKEN }}
         run: |
-          npm run release
+          yarn run release

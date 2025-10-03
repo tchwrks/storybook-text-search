@@ -31,7 +31,7 @@
 > In the meantime,`v0.0.8` is live. The main change is support for a `pathPrefix` field in the `config.mjs`. This now ensures the addon works when deployed to sub paths like with Github pages w/o a custom domain, where your repo name is treated as the "slug" prefixing all routes.
 
 >[!Warning] 
-> *This addon has not performed the Storybook 9.0 migrations yet. A new major version supporting Storybook 9.0 will be released soon. This addon also **does not** currently support the React Native framework. [Limited functionality](#note-on-framework-compatibility) for non-react frameworks*
+> *This addon has not performed the Storybook 9.0 migrations yet. A new major version supporting Storybook 9.0 will be released soon (development in progress). This addon also **does not** currently support the React Native framework. [Limited functionality](#note-on-framework-compatibility) for non-react frameworks*
 
 ## Table of Contents
 - [Table of Contents](#table-of-contents)
@@ -181,7 +181,7 @@ npx storybook-search-init  # addon initialization
 
 npx storybook-search-build-index  # build index
 ```
->*A hosted Storybook with expanded documentation and a live demo will be released soon*
+>*I'm hoping to release a hosted Storybook with expanded documentation and a live demo with the 1.0.0 release for SB9 (@noah)*
 
 ### Note on Framework Compatibility
 
@@ -189,7 +189,8 @@ This addon works with all Storybook frameworks that support MDX, including React
 
 However, advanced text extraction from JSX components (like parsing strings from nested props or child elements) is currently optimized for React-style JSX. If you're using Vue or Angular, the addon will still index standard Markdown and inline HTML correctly — just avoid framework-specific bindings or dynamic components in `.mdx` files.
 
->Tip: For the best results in Vue or Angular or other non-react frameworks, write MDX with plain HTML/Markdown content. Full JSX-style extraction for other frameworks may be added in the future. If you are interested in accelerating that timeline, [reach out](#connect).
+> [!tip]
+> For the best results in Vue or Angular or other non-react frameworks, write MDX with plain HTML/Markdown content. Full JSX-style extraction for other frameworks may be added in the future. If you are interested in accelerating that timeline, [reach out](#connect).
 
 ## Advanced Configuration
 
@@ -400,11 +401,11 @@ Have feedback, ideas, or a collaboration in mind? Reach out anytime
 [MIT](LICENSE)
 
 ## Roadmap
-- [ ] Storybook 9.0 migration + major bump
+- [x] (Work in progress) Storybook 9.0 migration + major bump
 - [ ] Demo-embedded docs
 - [ ] React: Parse stories + component definitions (for autodocs)
 - [ ] Advanced searches (multi-keyword, boolean operations, etc)
-- [ ] Expanded config
+- [x] (Work in progress / partial done) Expanded config
 
 ## Ready to stop playing Where's Wally with your Storybook docs?
 ```bash

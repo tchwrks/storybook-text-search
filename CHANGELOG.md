@@ -1,3 +1,20 @@
+# v0.0.8 (Fri Oct 03 2025)
+
+#### ⚠️ Pushed to `main`
+
+- release: 0.0.8 - added support for deploying to subpaths via pathPrefix in config.mjs (noahdavis35@att.net)
+- small tweak to readme + merged in feature/path-prefix branch (noahdavis35@att.net)
+- updated init script to ask for pathPrefix + more README updates (noahdavis35@att.net)
+- updated README (noahdavis35@att.net)
+- updated config to support path prefix for sub path deployments (noahdavis35@att.net)
+- Fixed broken link in README (noahdavis35@att.net)
+
+#### Authors: 1
+
+- Noah Davis ([@noahidavis](https://github.com/noahidavis))
+
+---
+
 # v0.0.7 (Fri Jun 06 2025)
 
 #### ⚠️ Pushed to `main`

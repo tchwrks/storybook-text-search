@@ -79,10 +79,11 @@ This addon ships with an initialization script to get you going:
 npx storybook-text-search-init
 ```
 This script will:
-- Generate `.storybook-text-search` which houses the config and artifact(s)
-- Read your `.storybook/main.{ts,js}` and generate a default `.storybook-text-search/config.js` with sensible defaults
 - Register the addon and its artifacts in `.storybook/main.{ts,js}` 
-- Generate an initial index. 
+- Generate `.storybook-text-search` which houses the config and artifact(s)
+- Read your `.storybook/main.{ts,js}` to "copy" over the input paths
+- Ask you if you're deploying your Storybook to a subpath (e.g. GitHub Pages w/o a custom domain) before generating a default `.storybook-text-search/config.js` with sensible defaults
+- Generate an initial index
 
 For most setups, this is all you need to get going. Just start Storybook like usual and enjoy!
 

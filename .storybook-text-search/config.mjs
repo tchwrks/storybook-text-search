@@ -7,7 +7,7 @@ import {
 
 const config = {
   inputPaths: ["../src/stories/**/*.mdx", "../src/**/*.stories.{js,jsx,ts,tsx}"],
-  outputDebugJson: true,
+  pathPrefix: undefined,
   jsxPropAllowList: ['alt', 'title', 'aria-label', 'placeholder', 'label', 'value', 'children'],
   jsxTextMap: {
     Table: {

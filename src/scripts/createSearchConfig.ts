@@ -16,6 +16,8 @@ interface CreateConfigOptions {
     fileName?: string; // optional override, defaults to `search.config.js`
     stories?: string[];
 }
+import * as readline from 'node:readline/promises';
+import { stdin as input, stdout as output } from 'node:process';
 
 export async function createTextSearchConfig({
     targetDir,
@@ -46,7 +48,15 @@ export async function createTextSearchConfig({
     const sourceFile = project.createSourceFile(filePath, '', { overwrite: false });
 
     // Add JSDoc-style type annotation comment for JS
-    sourceFile.insertText(0, `/** @type {import('src/types/index').TextSearchConfig} */\n`);
+    // sourceFile.insertText(0, `/** @type {import('src/types/index').TextSearchConfig} */\n`);
+
+    // get optional pathPrefix
+    const rl = readline.createInterface({ input, output });
+    const pathPrefixRes = await rl.question('Are you deploying Storybook to a subpath (e.g. GitHub Pages repo w/o a custom domain)?\nIf so, enter the path prefix (e.g. "name-of-your-repo"). Otherwise, press enter to skip  ');
+    rl.close();
+    const pathPrefix = pathPrefixRes && pathPrefixRes.trim().length > 0
+        ? `'${pathPrefixRes.trim()}'`
+        : undefined;
 
     sourceFile.addVariableStatement({
         declarationKind: VariableDeclarationKind.Const,
@@ -56,7 +66,8 @@ export async function createTextSearchConfig({
                 initializer: writer => {
                     writer.write('{').indent(() => {
                         writer.writeLine(`inputPaths: ${JSON.stringify(defaultStories)},`);
-                        writer.writeLine(`outputDebugJson: true,`);
+                        writer.writeLine(`pathPrefix: ${pathPrefix},`);
+                        // writer.writeLine(`outputDebugJson: true,`); // !deprecated flag
                         writer.writeLine(`maxJsxDepth: 5,`);
                         writer.writeLine(`jsxPropAllowList: ['alt', 'title', 'aria-label', 'placeholder', 'label', 'value', 'children'],`);
                     }).write('}');

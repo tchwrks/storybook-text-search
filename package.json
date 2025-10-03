@@ -4,10 +4,23 @@
   "description": "A Storybook addon that enables full-text search through your MDX files.",
   "keywords": [
     "storybook-addons",
+    "organize",
+    "data-state",
+    "essentials",
     "search",
+    "text-search",
+    "searching",
     "text",
+    "documentation",
     "docs",
-    "mdx"
+    "doc",
+    "markdown",
+    "mdx",
+    "react",
+    "vue",
+    "angular",
+    "svelte",
+    "web-components"
   ],
   "repository": {
     "type": "git",

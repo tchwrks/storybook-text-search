@@ -1,3 +1,19 @@
+# v0.0.9 (Fri Oct 03 2025)
+
+#### 🐛 Bug Fix
+
+- (non-functional change) updated tags in package.json [#1](https://github.com/tchwrks/storybook-text-search/pull/1) ([@noahidavis](https://github.com/noahidavis))
+
+#### ⚠️ Pushed to `main`
+
+- (non-functional change, ci override) fixed gh actions using wrong pkg mgmt ([@noahidavis](https://github.com/noahidavis))
+
+#### Authors: 1
+
+- Noah Davis ([@noahidavis](https://github.com/noahidavis))
+
+---
+
 # v0.0.8 (Fri Oct 03 2025)
 
 #### ⚠️ Pushed to `main`

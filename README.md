@@ -76,7 +76,7 @@ npx storybook add @tchwrks/storybook-text-search
 This addon ships with an initialization script to get you going:
 
 ```bash
-npx storybook-text-search-init
+npx storybook-search-init
 ```
 This script will:
 - Register the addon and its artifacts in `.storybook/main.{ts,js}` 

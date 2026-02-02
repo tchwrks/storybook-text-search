@@ -2,18 +2,14 @@ import type { StorybookConfig } from "@storybook/react-vite";
 const config: StorybookConfig = {
   stories: ["../src/stories/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
     addons: [
+      "@storybook/addon-docs",
         "@storybook/addon-links",
-        "@storybook/addon-essentials",
-        "@storybook/addon-interactions",
         "@tchwrks/storybook-text-search"
     ],
     staticDirs: ['../src/stories/assets', "../.storybook-text-search/artifacts"],
   framework: {
     name: "@storybook/react-vite",
     options: {},
-  },
-  docs: {
-    autodocs: "tag",
   },
   core: {
     builder: '@storybook/builder-vite',

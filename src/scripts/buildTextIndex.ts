@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-import path from 'path';
-import fs from 'fs/promises';
+import path from 'node:path';
+import fs from 'node:fs/promises';
 import { generateDocs } from '../utils/generateDocs';
 import MiniSearch from 'minisearch';
 import { TextSearchConfig } from 'src/types';
-import { pathToFileURL } from 'url';
+import { pathToFileURL } from 'node:url';
 
 
 export interface SearchDoc {
@@ -38,9 +38,9 @@ export async function buildTextIndex() {
     const config: TextSearchConfig = (await import(configUrl)).default;
 
     if (Array.isArray(config.inputPaths)) {
-        config.inputPaths = config.inputPaths.map(p => path.resolve(toolDirPath, p));
+        config.inputPaths = config.inputPaths.map(p => path.resolve(toolDirPath, p).replaceAll('\\', '/'));
     } else {
-        throw new Error("❌ config.inputPaths must be an array of string(s). If using a single path, please place it in an array");
+        throw new TypeError("❌ config.inputPaths must be an array of string(s). If using a single path, please place it in an array");
     }
 
     const docs: SearchDoc[] = await generateDocs({ config: config, rootDir: toolDirPath });

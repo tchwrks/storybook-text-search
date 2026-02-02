@@ -3,9 +3,9 @@
 // TODO: Review quote style detection logic
 // TODO: Abstract / lift helper functions and utils
 
-import path from 'path';
+import path from 'node:path';
 import { Project, SourceFile, SyntaxKind, ObjectLiteralExpression, ArrayLiteralExpression, PropertyAssignment } from 'ts-morph';
-import fs from 'fs';
+import fs from 'node:fs';
 
 interface ModifyOptions {
     path: string;

@@ -2,8 +2,8 @@
 
 // TODO: Accept CJS as well as ESM (.mjs)
 
-import path from 'path';
-import fs from 'fs/promises';
+import path from 'node:path';
+import fs from 'node:fs/promises';
 import {
     Project,
     QuoteKind,

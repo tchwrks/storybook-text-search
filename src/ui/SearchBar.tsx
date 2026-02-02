@@ -245,7 +245,7 @@ export const SearchBar = () => {
                                 {results.map((doc, i) => (
                                     <li
                                         key={i}
-                                        ref={el => resultsRefs.current[i] = el}
+                                        ref={el => { resultsRefs.current[i] = el; }}
                                         onClick={() => handleClick(doc)}
                                         style={{
                                             borderRadius: 4,

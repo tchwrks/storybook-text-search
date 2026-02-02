@@ -1,5 +1,5 @@
 import { Project, SyntaxKind } from 'ts-morph';
-import path from 'path';
+import path from 'node:path';
 
 export type ComponentMeta = {
     title?: string;

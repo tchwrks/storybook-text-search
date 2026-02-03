@@ -26,5 +26,7 @@ export interface TextSearchConfig {
   maxJsxDepth: number;
   /** Default allowed / checked props. Must be set */
   jsxPropAllowList: string[];
+  /** Optional suffix to append to doc hrefs */
+  mdxHrefSuffix?: string;
 }
 

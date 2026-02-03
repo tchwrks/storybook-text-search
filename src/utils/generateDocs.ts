@@ -74,7 +74,7 @@ export async function generateDocs({
         .toLowerCase()
         .replace(/^\//, "")
         .replace(/[\/\s_]+/g, "-");
-      const formattedDocSlug = `${baseDocSlug}{config.mdxHrefSuffix ?? ""}`;
+      const formattedDocSlug = `${baseDocSlug}${config.mdxHrefSuffix ?? ""}`;
 
       const docHref =
         config.pathPrefix && config.pathPrefix.length > 0
